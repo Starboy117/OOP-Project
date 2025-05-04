@@ -526,3 +526,10 @@
 0:0:0:0:0:0:0:1 - - [04/May/2025:03:54:14 -0700] "GET /Online_Hotel_Reservation_System/Login.jsp HTTP/1.1" 200 2160
 0:0:0:0:0:0:0:1 - - [04/May/2025:03:54:14 -0700] "GET /Online_Hotel_Reservation_System/css/login.css HTTP/1.1" 200 1242
 0:0:0:0:0:0:0:1 - - [04/May/2025:05:30:57 -0700] "POST /Online_Hotel_Reservation_System/Login.jsp HTTP/1.1" 200 2160
+0:0:0:0:0:0:0:1 - - [04/May/2025:05:48:45 -0700] "GET /Online_Hotel_Reservation_System/Home.html HTTP/1.1" 404 797
+0:0:0:0:0:0:0:1 - - [04/May/2025:05:48:45 -0700] "GET /favicon.ico HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [04/May/2025:05:48:45 -0700] "POST /Online_Hotel_Reservation_System/Login.jsp HTTP/1.1" 200 2178
+0:0:0:0:0:0:0:1 - - [04/May/2025:05:48:47 -0700] "GET /Online_Hotel_Reservation_System/Home.html HTTP/1.1" 404 797
+0:0:0:0:0:0:0:1 - - [04/May/2025:05:49:15 -0700] "GET /Online_Hotel_Reservation_System/Home.jsp HTTP/1.1" 200 8220
+0:0:0:0:0:0:0:1 - - [04/May/2025:05:49:22 -0700] "GET /Online_Hotel_Reservation_System/Login.jsp HTTP/1.1" 200 2178
+0:0:0:0:0:0:0:1 - - [04/May/2025:05:49:26 -0700] "GET /Online_Hotel_Reservation_System/Register.jsp HTTP/1.1" 404 743
