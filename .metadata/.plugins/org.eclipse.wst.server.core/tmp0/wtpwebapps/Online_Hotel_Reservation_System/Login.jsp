@@ -14,14 +14,14 @@
 
     <nav class="navbar custom navbar-light bg-light fixed-top" style="opacity: 90%;">
         <div class="logo1">
-          <a href="Home.html" class="navbar-brand">
+          <a href="Home.jsp" class="navbar-brand">
             <span class="fw-bold text-brown fs-1 text-s5">Tendura</span>
           </a>
         </div>
         <div class="tabs">
           <ul class="nav" style="margin: 0%;">
             <li class="nav-item">
-              <a class="nav-link custom" href="Home.html">Home</a>
+              <a class="nav-link custom" href="Home.jsp">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link custom" href="#">About Us</a>
@@ -48,7 +48,7 @@
                 <button  class="m-5 btn-brown btn-lg" type="submit" name="submit" >Login</button><br>
                
             </div>
-            <p class="pb-5">Don't have an account? <a>Register</a></p>
+            <p class="pb-5">Don't have an account? <a href="Register.jsp">Register</a></p>
            
         </div>
     </form>
