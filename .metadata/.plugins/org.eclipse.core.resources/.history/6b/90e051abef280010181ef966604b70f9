@@ -42,31 +42,16 @@ public class LoginServlet extends HttpServlet {
 		
 		
 			List<User> userDetails = UserDBUtil.validateUser(userName, password);
-			
-			if(userDetails == null || !userDetails.isEmpty()) {
-				request.setAttribute("userDetails", userDetails);
-				RequestDispatcher dis = request.getRequestDispatcher("Home.jsp");
-				dis.forward(request,response);
+			request.setAttribute("userDetails", userDetails);
 		// TODO Auto-generated method stub
-			}
-			else {
-				
-				request.setAttribute("error","**Invalid Username or password.");
-		        RequestDispatcher dis = request.getRequestDispatcher("Login.jsp");
-		        dis.forward(request, response);
-				
-				
-			}
 		}
 		catch(Exception e) {
 			
 			e.printStackTrace();
-			request.setAttribute("error", "Something went wrong. Try again.");
-	        RequestDispatcher dis = request.getRequestDispatcher("Login.jsp");
-	        dis.forward(request, response);
 		}
 		
-		
+		RequestDispatcher dis = request.getRequestDispatcher("Home.jsp");
+		dis.forward(request,response);
 
 	}
 	

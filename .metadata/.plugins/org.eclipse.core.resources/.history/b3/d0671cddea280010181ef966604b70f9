@@ -39,16 +39,12 @@
       <hr style="width: 98%; border: 2px #422100;" class="mb-5">
     </center>
 
-    <form method="post" action="log" class="d-flex justify-content-center align-items-center vh-100">
+    <form method="post" action="#" class="d-flex justify-content-center align-items-center vh-100">
         <div class="container custom shadow bg-white rounded-3">
             <h1 class="p-4 text-brown">Login</h1>
-            <% String error = (String) request.getAttribute("error"); %>
-			<% if (error != null) { %>
-			  <p style="color:red;"><%= error %></p>
-			<% } %>
             <div>
-                <input class="input1 border rounded" type="text" name="username" placeholder="Username" ><br>
-                <input class="input1 border rounded" type="password" name="password" placeholder="********" ><br>
+                <input class="input1 border rounded" type="text" name="username" placeholder="Username"><br>
+                <input class="input1 border rounded" type="password" name="password" placeholder="********"><br>
                 <button  class="m-5 btn-brown btn-lg" type="submit" name="submit" >Login</button><br>
                
             </div>

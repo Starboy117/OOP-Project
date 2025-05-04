@@ -47,8 +47,8 @@
 			  <p style="color:red;"><%= error %></p>
 			<% } %>
             <div>
-                <input class="input1 border rounded" type="text" name="username" placeholder="Username" ><br>
-                <input class="input1 border rounded" type="password" name="password" placeholder="********" ><br>
+                <input class="input1 border rounded" type="text" name="username" placeholder="Username" required><br>
+                <input class="input1 border rounded" type="password" name="password" placeholder="********" required><br>
                 <button  class="m-5 btn-brown btn-lg" type="submit" name="submit" >Login</button><br>
                
             </div>
