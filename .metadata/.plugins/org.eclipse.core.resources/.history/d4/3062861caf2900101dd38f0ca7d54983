@@ -1,0 +1,75 @@
+function validateForm() {
+    var name = document.getElementById("name");
+    var username = document.getElementById("uname");
+    var email = document.getElementById("email");
+    var pass = document.getElementById("password");
+    var cpass = document.getElementById("cPassword");
+
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var isValid = true;
+
+    // Name
+    if (name.value.trim() === "") {
+        name.style.borderColor = "red";
+        document.getElementById("msg1").innerText = "**Name cannot be empty";
+        isValid = false;
+    } else {
+        name.style.borderColor = "green";
+        document.getElementById("msg1").innerText = "";
+    }
+
+    // Username
+    if (username.value.trim() === "") {
+        username.style.borderColor = "red";
+        document.getElementById("msg2").innerText = "**Username cannot be empty";
+        isValid = false;
+    } else {
+        username.style.borderColor = "green";
+        document.getElementById("msg2").innerText = "";
+    }
+
+    // Email
+    if (email.value.trim() === "") {
+        email.style.borderColor = "red";
+        document.getElementById("msg3").innerText = "**Email cannot be empty";
+        isValid = false;
+    } else if (!emailPattern.test(email.value)) {
+        email.style.borderColor = "red";
+        document.getElementById("msg3").innerText = "**Invalid email format";
+        isValid = false;
+    } else {
+        email.style.borderColor = "green";
+        document.getElementById("msg3").innerText = "";
+    }
+
+    // Password
+    if (pass.value.trim() === "") {
+        pass.style.borderColor = "red";
+        document.getElementById("msg4").innerText = "**Password cannot be empty";
+        isValid = false;
+    } else if (pass.value.length < 6) {
+        pass.style.borderColor = "red";
+        document.getElementById("msg4").innerText = "**Password too short";
+        isValid = false;
+    } else {
+        pass.style.borderColor = "green";
+        document.getElementById("msg4").innerText = "";
+    }
+
+    // Confirm Password
+    if (cpass.value.trim() === "") {
+        cpass.style.borderColor = "red";
+        document.getElementById("msg5").innerText = "**Confirm password cannot be empty";
+        isValid = false;
+    } else if (pass.value !== cpass.value) {
+        cpass.style.borderColor = "red";
+        pass.style.borderColor = "red";
+        document.getElementById("msg5").innerText = "**Passwords don't match";
+        isValid = false;
+    } else {
+        cpass.style.borderColor = "green";
+        document.getElementById("msg5").innerText = "";
+    }
+
+    return isValid; // If false, form won't submit
+}

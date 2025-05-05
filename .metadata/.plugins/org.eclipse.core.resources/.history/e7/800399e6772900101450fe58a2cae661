@@ -1,0 +1,52 @@
+package com.user;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserDBUtil {
+	
+	public static List<User> validateUser(String userName, String password){
+	    ArrayList<User> userList= new ArrayList<>();
+
+	    String url="jdbc:mysql://localhost:3306/tendura_hotel";
+	    String dbUser ="root";
+	    String pass ="parasite";
+	    String msg ="hi";
+	
+
+	    try {
+	        Class.forName("com.mysql.jdbc.Driver");
+
+	        Connection con = DriverManager.getConnection(url, dbUser, pass);
+	        
+	       
+	        Statement stmt = con.createStatement();
+
+	        String sql="select * from registered_user where Username='"+userName+"' and password='"+password+"'";
+	        ResultSet rs = stmt.executeQuery(sql);
+
+	        if(rs.next()) {
+	            int id=rs.getInt(1);
+	            String name = rs.getString(2);
+	            String un = rs.getString(3);
+	            String email = rs.getString(4);
+	            String pw = rs.getString(5);
+
+	            User user1 = new User(id,name,un,email,pw);
+	            userList.add(user1);
+	        }
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return userList;
+	}
+
+	
+}
+

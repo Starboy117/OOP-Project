@@ -10,25 +10,25 @@ import java.util.List;
 
 public class UserDBUtil {
 	
+	private static Connection con=null;
+	private static Statement stmt = null;
+	private static ResultSet rs= null;
+	
 	public static List<User> validateUser(String userName, String password){
 	    ArrayList<User> userList= new ArrayList<>();
 
-	    String url="jdbc:mysql://localhost:3306/tendura_hotel";
-	    String dbUser ="root";
-	    String pass ="parasite";
-	    String msg ="hi";
+	  
 	
 
 	    try {
-	        Class.forName("com.mysql.jdbc.Driver");
-
-	        Connection con = DriverManager.getConnection(url, dbUser, pass);
+	        
+	    	con = DatabaseCon.getConnection();
 	        
 	       
-	        Statement stmt = con.createStatement();
+	        stmt = con.createStatement();
 
 	        String sql="select * from registered_user where Username='"+userName+"' and password='"+password+"'";
-	        ResultSet rs = stmt.executeQuery(sql);
+	        rs = stmt.executeQuery(sql);
 
 	        if(rs.next()) {
 	            int id=rs.getInt(1);
@@ -45,6 +45,67 @@ public class UserDBUtil {
 	    }
 
 	    return userList;
+	}
+	
+	public static boolean checkUsername(String username) {
+		
+		boolean msg = false;
+		
+		try {
+			
+			con=DatabaseCon.getConnection();
+			stmt=con.createStatement();
+			
+			String sql="Select * from where Username='"+username+"'";
+			
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				
+				msg=true;
+			}
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		return msg;
+	}
+	
+	
+	public static boolean insertUserDetails(String name, String userName, String email, String password) {
+		boolean msg = false;
+		
+		
+		
+		try {
+			
+			con = DatabaseCon.getConnection();
+			stmt = con.createStatement();
+	        
+	        String sql="Insert into registered_user values(0,'"+name+"','"+userName+"','"+email+"','"+password+"')";
+	        
+	        int rs = stmt.executeUpdate(sql);
+	        
+	        if(rs>0) {
+	        	
+	        	msg = true;
+	        }
+	        else {
+	        	
+	        	msg = false;
+	        }
+	        
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		return msg;
 	}
 
 	

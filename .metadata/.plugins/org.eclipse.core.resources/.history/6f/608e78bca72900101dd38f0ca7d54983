@@ -1,0 +1,14 @@
+var name = doucument.getElementId("name").value.trim();
+var username = doucument.getElementId("uname").value.trim();
+var email = doucument.getElementId("email").value.trim();
+var pass = doucument.getElementId("password").value.trim();
+var cpass = doucument.getElementId("cPassword").value.trim();
+
+
+function validateForm(){
+	
+	if(name===""){
+		
+		
+	}
+}

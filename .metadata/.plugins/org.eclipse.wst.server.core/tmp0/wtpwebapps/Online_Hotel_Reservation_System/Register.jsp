@@ -8,6 +8,7 @@
     <link rel="icon" href="Images/Tendura 1.png" type="image/png" />
     <link href="css/login.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script  src="js/register.js" defer></script>
 </head>
 
 <body class="bg-light d-flex flex-column">
@@ -39,16 +40,25 @@
       <hr style="width: 98%; border: 2px #422100;" class="mb-5">
     </center>
 
-    <form class="d-flex justify-content-center align-items-center vh-100" method="post" action="#">
+    <form class="d-flex justify-content-center align-items-center vh-100" onsubmit="return validateForm()" method="post" action="insert" id="regForm" >
         <div class="container custom shadow bg-white rounded-3">
             <h1 class="p-4 text-brown">Register</h1>
+            <% String error = (String) request.getAttribute("error"); %>
+			<% if (error != null) { %>
+			  <p style="color:red;"><%= error %></p>
+			<% } %>
             <div>
-                <input class="input1 border rounded" type="text" placeholder="Name"><br>
-                <input class="input1 border rounded" type="text" placeholder="Username"><br>
-                <input class="input1 border rounded" type="text" placeholder="Email"><br>
-                <input class="input1 border rounded" type="text" placeholder="Password"><br>
-                <input class="input1 border rounded" type="password" placeholder="Confirm Password"><br>
-                <button  class="m-5 btn-brown btn-lg" type="submit" name="submit" >Register</button><br>
+                <input class="input1  rounded" type="text" placeholder="Name" name="name" id="name"><br>
+                <p id="msg1" style="color:red;"></p>
+                <input class="input1  rounded" type="text" placeholder="Username" name="uname" id="uname"><br>
+                <p id="msg2" style="color:red;"></p>
+                <input class="input1  rounded" type="email" placeholder="Email" name="email" id="email"><br>
+                <p id="msg3" style="color:red;"></p>
+                <input class="input1  rounded" type="text" placeholder="Password" name="password" id="password"><br>
+                <p id="msg4" style="color:red;"></p>
+                <input class="input1  rounded" type="password" placeholder="Confirm Password" name="cPassword" id="cPassword"><br>
+                <p id="msg5" style="color:red;"></p>
+                <button  class="m-5 btn-brown btn-lg" type="submit" name="submit" id="submit">Register</button><br>
                
             </div>
             <p class="pb-5">Already have an account? <a href="Login.jsp">Login</a></p>
@@ -79,5 +89,7 @@
       </div>
     </div>
   </footer>
+  
+  
 </body>
 </html>
