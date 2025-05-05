@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LoginServlet
@@ -36,14 +37,16 @@ public class LoginServlet extends HttpServlet {
         
         try {
             List<User> userDetails = UserDBUtil.validateUser(userName, password);
-//        String check = "hi";
-//            request.setAttribute("hi", check);
-//            RequestDispatcher dis = request.getRequestDispatcher("Login.jsp");
-//            dis.forward(request, response);
+
            
             
             if (userDetails != null && !userDetails.isEmpty()) {  
-                request.setAttribute("userDetails", userDetails);
+            	
+            	User user = userDetails.get(0);
+            	HttpSession session = request.getSession();
+                session.setAttribute("userId",user.getId());
+                session.setAttribute("name", user.getName());
+                
                 RequestDispatcher dis = request.getRequestDispatcher("Home.jsp");
                 dis.forward(request, response);
             } else {

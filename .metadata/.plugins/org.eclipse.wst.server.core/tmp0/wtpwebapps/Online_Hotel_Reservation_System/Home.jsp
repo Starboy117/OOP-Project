@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+
+<%@ page language="java" %>
+<%
+    Integer userId = (Integer) session.getAttribute("userId");
+	String name = (String) session.getAttribute("name");
+%>
+
 <html>
 <head>
   <meta charset="UTF-8" />
@@ -34,12 +41,29 @@
         </li>
       </ul>
       <div class="button-container">
-        <a href="Login.jsp"><button class="btn custom2 btn-lg">Login</button></a>
-        <a href="Register.jsp"><button class="btn custom bg-brown btn-lg">Register</button></a>
-        <a href="#" class="text-decoration-none">
-  			<i class="bi bi-person-circle custom-icon"></i>
-		</a>
+        <a href="Login.jsp"><button class="btn custom2 btn-lg" id="login">Login</button></a>
+        <a href="Register.jsp"><button class="btn custom bg-brown btn-lg" id="register">Register</button></a>
       </div>
+      
+     <div class="dropdown profile" id="profile">
+  <button class="btn dropdown-toggle btn-lg text-brown fw-6" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Welcome, <%=name %>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="min-width: 100%;">
+    <li>
+      <a class="dropdown-item fs-5 text-brown" href="#">
+        <i class="bi bi-person-circle me-2 text-brown"></i> Profile
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item fs-5 text-brown" href="logout">
+        <i class="bi bi-box-arrow-right me-2 text-brown"></i> Logout
+      </a>
+    </li>
+  </ul>
+</div>
+
+		
     </div>
   </nav>
 
@@ -120,10 +144,22 @@
       </div>
     </div>
   </footer>
+	
+	<script>
+  		var checkId = 0;
 
+  		<% if (userId != null && userId != 0) { %>
+   		 checkId = 1;
+  		<% } %>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+  		if (checkId === 1) {
+    		document.getElementById("profile").style.display = "block"; 
+    		document.getElementById("login").style.display = "none";
+   		 	document.getElementById("register").style.display = "none";
+  		}
+	</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

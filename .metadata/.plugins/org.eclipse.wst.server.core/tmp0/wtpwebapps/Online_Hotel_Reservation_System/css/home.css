@@ -142,11 +142,29 @@
   height: 100px;
 }
 
-.custom-icon{
+.profile{
 	
 	color: #422100;
-	font-size: 3rem;
 	display: none;
+	font-weight:500;
+}
+
+.welcomeText{
+	
+	margin:auto;
+	margin-right:20px;
+	font-weight:500;
+	color:#422100;
+	font-size:20px;
+	display:none;
+}
+
+.cutomizing{
+	
+	
+}
+.fw-6{
+	font-weight:500;
 }
   
 
