@@ -13,62 +13,49 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class LoginServlet
  */
-//@WebServlet("/LoginServlet")
+//@WebServlet("/log")
 public class LoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String userName = request.getParameter("username");
-		String password= request.getParameter("password");
-		
-		
-		if (userName == null || userName.trim().isEmpty() || 
-		        password == null || password.trim().isEmpty()) {
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        String userName = request.getParameter("username");
+        String password = request.getParameter("password");
+        
+        if (userName == null || userName.trim().isEmpty() || 
+            password == null || password.trim().isEmpty()) {
 
-		        request.setAttribute("error", "Username and password cannot be empty.");
-		        RequestDispatcher dis = request.getRequestDispatcher("Login.jsp");
-		        dis.forward(request, response);
-		        return;
-		    }
-		
-		
-		
-		
-		try {
-		
-		
-			List<User> userDetails = UserDBUtil.validateUser(userName, password);
-			
-			if(userDetails == null || !userDetails.isEmpty()) {
-				request.setAttribute("userDetails", userDetails);
-				RequestDispatcher dis = request.getRequestDispatcher("Home.jsp");
-				dis.forward(request,response);
-		// TODO Auto-generated method stub
-			}
-			else {
-				
-				request.setAttribute("error","**Invalid Username or password.");
-		        RequestDispatcher dis = request.getRequestDispatcher("Login.jsp");
-		        dis.forward(request, response);
-				
-				
-			}
-		}
-		catch(Exception e) {
-			
-			e.printStackTrace();
-			request.setAttribute("error", "Something went wrong. Try again.");
-	        RequestDispatcher dis = request.getRequestDispatcher("Login.jsp");
-	        dis.forward(request, response);
-		}
-		
-		
-
-	}
-	
-	
+            request.setAttribute("error", "Username and password cannot be empty.");
+            RequestDispatcher dis = request.getRequestDispatcher("Login.jsp");
+            dis.forward(request, response);
+            return;
+        }
+        
+        try {
+            List<User> userDetails = UserDBUtil.validateUser(userName, password);
+//        String check = "hi";
+//            request.setAttribute("hi", check);
+//            RequestDispatcher dis = request.getRequestDispatcher("Login.jsp");
+//            dis.forward(request, response);
+           
+            
+            if (userDetails != null && !userDetails.isEmpty()) {  
+                request.setAttribute("userDetails", userDetails);
+                RequestDispatcher dis = request.getRequestDispatcher("Home.jsp");
+                dis.forward(request, response);
+            } else {
+                request.setAttribute("error", "**Invalid Username or password.");
+                RequestDispatcher dis = request.getRequestDispatcher("Login.jsp");
+                dis.forward(request, response);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("error", "Something went wrong. Try again.");
+            RequestDispatcher dis = request.getRequestDispatcher("Login.jsp");
+            dis.forward(request, response);
+        }
+    	}
 }

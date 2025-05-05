@@ -14,7 +14,7 @@
 <body class="bg-light d-flex flex-column">
   <nav class="navbar custom navbar-light bg-light fixed-top" style="opacity: 90%;">
     <div class="logo1">
-      <a href="Home.html" class="navbar-brand">
+      <a href="Home.jsp" class="navbar-brand">
         <span class="fw-bold text-brown fs-1 text-s5">Tendura</span>
       </a>
     </div>
@@ -35,7 +35,10 @@
       </ul>
       <div class="button-container">
         <a href="Login.jsp"><button class="btn custom2 btn-lg">Login</button></a>
-        <button class="btn custom bg-brown btn-lg">Register</button>
+        <a href="Register.jsp"><button class="btn custom bg-brown btn-lg">Register</button></a>
+        <a href="#" class="text-decoration-none">
+  			<i class="bi bi-person-circle custom-icon"></i>
+		</a>
       </div>
     </div>
   </nav>
