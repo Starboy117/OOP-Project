@@ -1,0 +1,92 @@
+@font-face {
+    font-family: 'Cinzel';
+    src: url('Fonts/Cinzel-VariableFont_wght.ttf') format('truetype');
+  }
+  
+ 
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+  }
+  
+
+  
+  
+  .bg-brown {
+    background-color: #422100;
+    color: whitesmoke;
+  }
+  
+  .text-brown {
+    color: #422100;
+   
+  }
+
+  .text-s5{
+
+    font-family: 'Cinzil';
+  }
+
+  .navbar.custom{
+
+    padding-left: 350px;
+    padding-right: 350px;
+    position: relative;
+  }
+  
+  .logo1 {
+
+    width: auto;
+  }
+  
+  .tabs {
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-link.custom {
+    color: #422100;
+    font-size: 22px;
+    font-weight: 400;
+    padding-left: 50px;
+  }
+  
+  .nav-link.custom:hover,
+  .nav-link.custom.active {
+    color: #d6ab5b;
+  }
+
+  .profile-container{
+
+    height: auto;
+    margin: auto;
+    width: 50%;
+    border-radius: 10px;
+  }
+
+  .design1{
+
+    height: 400px;
+    width: 100%;
+    background-color: #422100;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .input1{
+
+    margin-top: 20px;
+    width: 50%;
+    height: 50px;
+    border: 1px solid #ccc;
+}
+
+.form-container{
+
+  width: 80%;
+  background-color: #d6ab5b;
+}

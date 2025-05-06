@@ -46,10 +46,6 @@
 			<% if (error != null) { %>
 			  <p style="color:red;"><%= error %></p>
 			<% } %>
-			<% String hi = (String) request.getAttribute("hi"); %>
-			<% if (hi != null) { %>
-			  <p style="color:red;"><%= hi %></p>
-			<% } %>
             <div>
                 <input class="input1 border rounded" type="text" name="username" placeholder="Username" ><br>
                 <input class="input1 border rounded" type="password" name="password" placeholder="********" ><br>
@@ -67,7 +63,7 @@
       <hr style="width: 98%; border: 2px #422100;" class="mb-5">
     </center>
     <div class="container">
-      <p class="mb-2">© 2025 Tendura Hotel. All rights reserved.</p>
+      <p class="mb-2">ï¿½ 2025 Tendura Hotel. All rights reserved.</p>
       <p class="mb-3">
         <a href="#" class="text-brown text-decoration-none">Privacy Policy</a> | 
         <a href="#" class="text-brown text-decoration-none">Terms of Service</a>
