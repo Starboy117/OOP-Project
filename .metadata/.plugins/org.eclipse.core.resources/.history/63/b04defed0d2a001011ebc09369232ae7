@@ -59,7 +59,9 @@ public class userInsertServlet extends HttpServlet {
 			
 			if(msg==true) {
 				
-				response.sendRedirect("Login.jsp?success=1");
+				request.setAttribute("Success", "Successfully registered.");
+				RequestDispatcher dis = request.getRequestDispatcher("Login.jsp");
+	            dis.forward(request, response);
 				
 			}
 			else {
