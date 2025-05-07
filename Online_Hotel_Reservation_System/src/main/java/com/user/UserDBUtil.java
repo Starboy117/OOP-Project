@@ -107,6 +107,40 @@ public class UserDBUtil {
 		
 		return msg;
 	}
+	
+	
+	
+	
+	public static boolean updateUserDetails(int id,String name, String username, String email) {
+		
+		boolean msg=false;
+		
+		
+		try {
+			
+			con=DatabaseCon.getConnection();
+			stmt = con.createStatement();
+			
+			String sql = "UPDATE registered_user SET Name='" + name + "', Username='" + username + "', email='" + email + "' WHERE UserID=" + id;
+
+			int rs = stmt.executeUpdate(sql);
+			
+			if(rs>0) {
+				
+				msg=true;
+			}
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return msg;
+	}
 
 	
 }

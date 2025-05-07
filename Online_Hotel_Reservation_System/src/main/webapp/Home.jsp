@@ -11,7 +11,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tendura</title>
-  <link rel="icon" href="Images/Tendura 1.png" type="image/png" />
+  <link rel="icon" href="images/tendura1.png" type="image/png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="css/home.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -51,7 +51,7 @@
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="min-width: 100%;">
     <li>
-      <a class="dropdown-item fs-5 text-brown" href="#">
+      <a class="dropdown-item fs-5 text-brown" href="userProfile.jsp">
         <i class="bi bi-person-circle me-2 text-brown"></i> Profile
       </a>
     </li>

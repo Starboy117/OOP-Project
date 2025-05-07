@@ -1,11 +1,37 @@
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%
+
+	Integer id = (Integer) session.getAttribute("userId");
+	String name;
+	String username;
+	String email;
+	String pass;
+	
+	if(id == null){
+		
+		response.sendRedirect("Login.jsp");
+		return;
+	}
+	else{
+		
+		 name = (String) session.getAttribute("name");
+		 username = (String) session.getAttribute("username");
+		 email = (String) session.getAttribute("email");
+		 pass = (String) session.getAttribute("pass");
+	}
+%>
+
+
+
 
 <html>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Tendura</title>
-        <link rel="icon" href="Images/Tendura 1.png" type="image/png" />
+        <link rel="icon" href="images/tendura1.png" type="image/png" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
         <link href="css/userProfile.css" rel="stylesheet">
@@ -45,23 +71,23 @@
 
           </div>
 
-          <form>
+          <form id="form1" method="post" action="updateUser" >
             
               <div class="form-container">
-                <fieldset disabled>
+                <fieldset disabled id="fieldset1">
                   <legend class="fs-1">User Detals</legend><br>
                   <label class="fs-3">Name</label><br>
-                  <input class="input1" type="text"><br><br>
+                  <input class="input1" type="text" name="name" value="<%=name %>"><br><br>
 
                   <label class="fs-3">Username</label><br>
-                  <input class="input1" type="text"><br><br>
+                  <input class="input1" type="text" name="username" value="<%=username %>"><br><br>
 
                   <label class="fs-3">Email</label><br>
-                  <input class="input1" type="email"><br><br>
+                  <input class="input1" type="email" name="email" value="<%=email %>"><br><br>
                 </fieldset>
 
-                <button class="btn custom bg-brown btn-lg border-0">Edit <i class="bi bi-pencil"></i></button>
-                <button class="btn-success custom btn-lg border-0" style="display: none;" >Update <i class="bi bi-arrow-clockwise"></i>
+                <button type="button" class="btn custom bg-brown btn-lg border-0" id="edit-btn" onclick="updateProfile();">Edit <i class="bi bi-pencil"></i></button>
+                <button type="submit" class="btn-success btn-lg border-0" style="display: none;margin-bottom:50px;" id="update-btn">Update <i class="bi bi-arrow-clockwise"></i>
                 </button>
                 </div>
             
@@ -71,19 +97,20 @@
               <hr style="margin: auto;">
               <br><br>
 
-          <form>
+          <form id="form2">
             
-              <div class="form-container">
-                <fieldset disabled>
+              <div class="form-container" style="padding-bottom:50px;">
+                <fieldset disabled id="fieldset2">
                   <legend class="fs-1">Password</legend><br>
                   <label class="fs-3">Username</label><br>
-                  <input class="input1" type="password"><br><br>
+                  <input class="input1" type="password" value="<%=pass %>"><br><br>
 
                   <label class="fs-3">Confirm Password</label><br>
-                  <input class="input1" type="password"><br><br>
+                  <input class="input1" type="password" value="<%=pass %>"><br><br>
                 </fieldset>
-                <button class="btn custom bg-brown btn-lg border-0">Change Password</i></button>
-                <button class="btn-success custom btn-lg border-0" style="display: none;">Change Password</i>
+                
+                <button type="button" class="btn custom bg-brown btn-lg border-0" id="cp-btn" onclick="changePass();">Change Password</button>
+                <button type="submit" class="btn-success btn-lg border-0" style="margin-bottom:50px;display:none" id="cp-update-btn">Change Password</button>
                   
               </div>
           
@@ -91,7 +118,11 @@
 
 
         </div>
+
+        <script src="js/userProfile.js"></script>
     </body>
+    
+   
 
     
 </html>

@@ -1,0 +1,60 @@
+package com.user;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+@WebServlet("/UpdateUserServlet")
+public class UpdateUserServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session = request.getSession(false);
+		Integer id =(Integer) session.getAttribute("userId");
+		
+		String name = request.getParameter("name");
+		String username = request.getParameter("username");
+		String email = request.getParameter("email");
+		
+		
+		
+		boolean isTrue;
+		
+		try {
+			
+			isTrue=UserDBUtil.updateUserDetails(id, name, username, email);
+			
+			if(isTrue == true) {
+				
+				session.setAttribute("name", name);
+			    session.setAttribute("username", username);
+			    session.setAttribute("email", email);
+				response.sendRedirect("userProfile.jsp");
+			}
+			else {
+				
+				response.sendRedirect("userProfile.jsp");
+			}
+			
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+			response.sendRedirect("userProfile.jsp");
+		}
+		
+		
+		
+		
+	
+	}
+
+}
