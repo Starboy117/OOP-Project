@@ -56,7 +56,7 @@ public class UserDBUtil {
 			con=DatabaseCon.getConnection();
 			stmt=con.createStatement();
 			
-			String sql="Select * from where Username='"+username+"'";
+			String sql="Select * from registered_user where Username='"+username+"'";
 			
 			rs = stmt.executeQuery(sql);
 			
