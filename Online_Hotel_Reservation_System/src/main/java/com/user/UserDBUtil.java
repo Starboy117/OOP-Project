@@ -60,7 +60,7 @@ public class UserDBUtil {
 			
 			rs = stmt.executeQuery(sql);
 			
-			if(rs.next()) {
+			if(!rs.next()) {
 				
 				msg=true;
 			}

@@ -53,13 +53,13 @@ public class userInsertServlet extends HttpServlet {
 			boolean check = UserDBUtil.checkUsername(userName);
 		
 			
-		if(check==false) {
+		if(check==true) {
 			
 			boolean msg = UserDBUtil.insertUserDetails(name, userName, email, password);
 			
 			if(msg==true) {
 				
-				response.sendRedirect("Login.jsp?success=1");
+				response.sendRedirect("Login.jsp");
 				
 			}
 			else {
