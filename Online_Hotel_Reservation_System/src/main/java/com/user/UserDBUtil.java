@@ -64,6 +64,10 @@ public class UserDBUtil {
 				
 				msg=true;
 			}
+			else {
+				
+				msg=false;
+			}
 			
 		}
 		catch(Exception e) {

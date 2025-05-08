@@ -53,7 +53,7 @@ public class userInsertServlet extends HttpServlet {
 			boolean check = UserDBUtil.checkUsername(userName);
 		
 			
-		if(check==true) {
+		if(check==false) {
 			
 			boolean msg = UserDBUtil.insertUserDetails(name, userName, email, password);
 			
