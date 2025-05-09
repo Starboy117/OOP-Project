@@ -1,6 +1,8 @@
 package com.user;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,29 +20,74 @@ public class UpdateUserServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		Integer id =(Integer) session.getAttribute("userId");
+		String sUserName = (String) session.getAttribute("username");
 		
 		String name = request.getParameter("name");
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
 		
+		String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
+
+
+		if (name == null || name.trim().isEmpty() ||
+		    username == null || username.trim().isEmpty() ||
+		    email == null || email.trim().isEmpty()) {
+		    
+		  
+		   
+		    session.setAttribute("formError", "**All fields are required.");
+		    response.sendRedirect("userProfile.jsp");
+		    return; 
+		}
+		
+		if(!email.matches(emailRegex)) {
+			
+			 session.setAttribute("emailError", "**Invalid email format");
+			 response.sendRedirect("userProfile.jsp");
+			 return; 
+			
+		}
+		
+		
+		
+
+		
 		
 		
 		boolean isTrue;
+		boolean check = UserDBUtil.checkUsername(username);
+		
+		if(sUserName.equals(username)) {
+			
+			check = true;
+		}
 		
 		try {
 			
-			isTrue=UserDBUtil.updateUserDetails(id, name, username, email);
+			if(check == true) {
 			
-			if(isTrue == true) {
+				isTrue=UserDBUtil.updateUserDetails(id, name, username, email);
+			
+				if(isTrue == true) {
 				
-				session.setAttribute("name", name);
-			    session.setAttribute("username", username);
-			    session.setAttribute("email", email);
-				response.sendRedirect("userProfile.jsp");
+					session.setAttribute("name", name);
+					session.setAttribute("username", username);
+			    	session.setAttribute("email", email);
+			    	response.sendRedirect("userProfile.jsp");
+			    	session.setAttribute("usernameError", null);
+				}
+				else {
+				
+					response.sendRedirect("userProfile.jsp");
+				}
+			
 			}
 			else {
 				
+				session.setAttribute("usernameError", "**Username already taken");
 				response.sendRedirect("userProfile.jsp");
+				
+				
 			}
 			
 			

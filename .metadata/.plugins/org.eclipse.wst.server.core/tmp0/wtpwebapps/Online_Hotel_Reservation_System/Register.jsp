@@ -46,6 +46,7 @@
             <% String error = (String) request.getAttribute("error"); %>
 			<% if (error != null) { %>
 			  <p style="color:red;"><%= error %></p>
+			  <% session.removeAttribute("error");%>
 			<% } %>
             <div>
                 <input class="input1  rounded" type="text" placeholder="Name" name="name" id="name"><br>

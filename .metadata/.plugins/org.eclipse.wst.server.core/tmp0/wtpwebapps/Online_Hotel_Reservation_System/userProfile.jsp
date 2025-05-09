@@ -8,6 +8,10 @@
 	String username;
 	String email;
 	String pass;
+	String usernameError = (String) session.getAttribute("usernameError");
+	String formError = (String) session.getAttribute("formError");
+	String emailError = (String) session.getAttribute("emailError");
+	String passwordError = (String) session.getAttribute("passwordError");
 	
 	if(id == null){
 		
@@ -76,14 +80,34 @@
               <div class="form-container">
                 <fieldset disabled id="fieldset1">
                   <legend class="fs-1">User Detals</legend><br>
+                  
+                   <%if(formError != null) {%>
+                  	<p style="color:red;"><%=formError %></p>
+                  	<%session.removeAttribute("formError"); %>
+                  <%} %>
+                  
+                  
                   <label class="fs-3">Name</label><br>
                   <input class="input1" type="text" name="name" value="<%=name %>"><br><br>
 
                   <label class="fs-3">Username</label><br>
+                  
+                  <%if(usernameError != null) {%>
+                  	<p style="color:red;"><%=usernameError %></p>
+                  	<%session.removeAttribute("usernameError"); %>
+                  <%} %>
+                  
                   <input class="input1" type="text" name="username" value="<%=username %>"><br><br>
 
                   <label class="fs-3">Email</label><br>
-                  <input class="input1" type="email" name="email" value="<%=email %>"><br><br>
+                  
+                   <%if(emailError != null) {%>
+                  	<p style="color:red;"><%=emailError %></p>
+                  	<%session.removeAttribute("emailError"); %>
+                  <%} %>
+                  
+                  
+                  <input class="input1" type="text" name="email" value="<%=email %>"><br><br>
                 </fieldset>
 
                 <button type="button" class="btn custom bg-brown btn-lg border-0" id="edit-btn" onclick="updateProfile();">Edit <i class="bi bi-pencil"></i></button>
@@ -97,16 +121,23 @@
               <hr style="margin: auto;">
               <br><br>
 
-          <form id="form2">
+          <form id="form2" method="post" action="passwordChange">
             
               <div class="form-container" style="padding-bottom:50px;">
                 <fieldset disabled id="fieldset2">
-                  <legend class="fs-1">Password</legend><br>
-                  <label class="fs-3">Username</label><br>
-                  <input class="input1" type="password" value="<%=pass %>"><br><br>
+                  <legend class="fs-1">Change Password</legend><br>
+                  
+                   <%if(passwordError != null) {%>
+                  	<p style="color:red;"><%=passwordError %></p>
+                  	<%session.removeAttribute("passwordError"); %>
+                  <%} %>
+                  
+                  
+                  <label class="fs-3">Password</label><br>
+                  <input class="input1" type="password" value="<%=pass %>" name="password"><br><br>
 
                   <label class="fs-3">Confirm Password</label><br>
-                  <input class="input1" type="password" value="<%=pass %>"><br><br>
+                  <input class="input1" type="password" value="<%=pass %>" name="cPassword"><br><br>
                 </fieldset>
                 
                 <button type="button" class="btn custom bg-brown btn-lg border-0" id="cp-btn" onclick="changePass();">Change Password</button>

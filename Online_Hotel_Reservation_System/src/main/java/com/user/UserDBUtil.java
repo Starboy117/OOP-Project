@@ -145,6 +145,40 @@ public class UserDBUtil {
 		
 		return msg;
 	}
+	
+	
+	public static boolean changedPasswordUpdate(int id,String password) {
+		
+		
+		boolean msg = false;
+		
+		try {
+			
+			con = DatabaseCon.getConnection();
+			stmt = con.createStatement();
+			
+			String sql="Update registered_user set password='"+password+"' where UserID='"+id+"'";
+			
+			int rs = stmt.executeUpdate(sql);
+			
+			if(rs>0) {
+				
+				msg=true;
+			}
+			else {
+				
+				msg=false;
+			}
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		return msg;
+		
+	}
 
 	
 }

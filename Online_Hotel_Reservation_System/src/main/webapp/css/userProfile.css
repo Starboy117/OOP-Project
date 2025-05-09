@@ -70,11 +70,15 @@
 
   .design1{
 
-    height: 400px;
+ 
     width: 100%;
-    background-color: #422100;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    background-image: url(../images/profile_bg.jpg);
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px);
+    height: 300px;
   }
 
   .input1{
