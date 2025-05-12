@@ -62,11 +62,11 @@ public class UserDBUtil {
 			
 			if(rs.next()) {
 				
-				msg=true;
+				msg=false;
 			}
 			else {
 				
-				msg=false;
+				msg=true;
 			}
 			
 		}
