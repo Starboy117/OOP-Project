@@ -60,6 +60,26 @@
 	<servlet-name>manageUsers</servlet-name>
 	<url-pattern>/getUsers</url-pattern>
 </servlet-mapping>
+
+<servlet>
+	<servlet-name>adminDash</servlet-name>
+	<servlet-class>com.staff.adminDashboardServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>adminDash</servlet-name>
+	<url-pattern>/adminDashboard</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>manageStaff</servlet-name>
+	<servlet-class>com.staff.staffManageServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>manageStaff</servlet-name>
+	<url-pattern>/getStaff</url-pattern>
+</servlet-mapping>
   
   
 </web-app>

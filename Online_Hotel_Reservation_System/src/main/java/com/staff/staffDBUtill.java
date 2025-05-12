@@ -3,6 +3,7 @@ package com.staff;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -107,6 +108,22 @@ public class staffDBUtill {
 	            objList.add(0);
 	        }
 	    }
+	    finally {
+	        // Ensure resources are closed in the finally block
+	        try {
+	            if (rs != null) {
+	                rs.close();
+	            }
+	            if (stmt != null) {
+	                stmt.close();
+	            }
+	            if (con != null) {
+	                con.close();
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();  // Log or handle the exception as needed
+	        }
+	    }
 	    
 	 
 
@@ -150,6 +167,22 @@ public class staffDBUtill {
 			
 			
 		}
+		finally {
+	        // Ensure resources are closed in the finally block
+	        try {
+	            if (rs != null) {
+	                rs.close();
+	            }
+	            if (stmt != null) {
+	                stmt.close();
+	            }
+	            if (con != null) {
+	                con.close();
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();  // Log or handle the exception as needed
+	        }
+	    }
 		
 		
 		return userList;
@@ -188,6 +221,22 @@ public class staffDBUtill {
 			
 			e.printStackTrace();
 		}
+		finally {
+	        // Ensure resources are closed in the finally block
+	        try {
+	            if (rs != null) {
+	                rs.close();
+	            }
+	            if (stmt != null) {
+	                stmt.close();
+	            }
+	            if (con != null) {
+	                con.close();
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();  // Log or handle the exception as needed
+	        }
+	    }
 		
 		return staffList;
 	}
@@ -228,6 +277,22 @@ public class staffDBUtill {
 			
 			e.printStackTrace();
 		}
+		finally {
+	        // Ensure resources are closed in the finally block
+	        try {
+	            if (rs != null) {
+	                rs.close();
+	            }
+	            if (stmt != null) {
+	                stmt.close();
+	            }
+	            if (con != null) {
+	                con.close();
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();  // Log or handle the exception as needed
+	        }
+	    }
 		
 		return roomList;
 	}
@@ -265,9 +330,82 @@ public class staffDBUtill {
 			
 			e.printStackTrace();
 		}
+		finally {
+	        // Ensure resources are closed in the finally block
+	        try {
+	            if (rs != null) {
+	                rs.close();
+	            }
+	            if (stmt != null) {
+	                stmt.close();
+	            }
+	            if (con != null) {
+	                con.close();
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();  // Log or handle the exception as needed
+	        }
+	    }
 		
 		
 		return userList;
+	}
+	
+	
+	public static List<Staff> getAllStaff(){
+		
+		
+		ArrayList staffList = new ArrayList<>();
+		
+		
+		try {
+			
+			con = DatabaseCon.getConnection();
+			
+			stmt=con.createStatement();
+			
+			String sql="select * from staff";
+			
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				int id=rs.getInt(1);
+				String name = rs.getString(2);
+				String username= rs.getString(3);
+				String email=rs.getString(4);
+				String pass=rs.getString(5);
+				String role = rs.getString(6);
+				
+				Staff staff = new Staff(id,name,username,email,pass,role);
+				
+				staffList.add(staff);
+				
+			}
+			
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		finally {
+	        // Ensure resources are closed in the finally block
+	        try {
+	            if (rs != null) {
+	                rs.close();
+	            }
+	            if (stmt != null) {
+	                stmt.close();
+	            }
+	            if (con != null) {
+	                con.close();
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();  // Log or handle the exception as needed
+	        }
+	    }
+		
+		return staffList;
 	}
 
 	

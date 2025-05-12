@@ -22,13 +22,13 @@
 	}
 
 	
-    Integer totalUsers = (Integer) session.getAttribute("totalUsers");
+    Integer totalUsers = (Integer) request.getAttribute("totalUsers");
     if (totalUsers == null) totalUsers = 0;
 
-    Integer totalStaff = (Integer) session.getAttribute("totalStaff");
+    Integer totalStaff = (Integer) request.getAttribute("totalStaff");
     if (totalStaff == null) totalStaff = 0;
 
-    Integer totalRooms = (Integer) session.getAttribute("totalRooms");
+    Integer totalRooms = (Integer) request.getAttribute("totalRooms");
     if (totalRooms == null) totalRooms = 0;
 
     String role = (String) session.getAttribute("role");
@@ -59,9 +59,9 @@
                 <p><%=role %></p>
             </div>
             <ul>
-                <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li class="active"><a href="adminDashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="getUsers"><i class="fas fa-user-alt"></i> Users</a></li>
-                <li><a href="guests.html"><i class="fas fa-user-tie"></i> Staff</a></li>
+                <li><a href="getStaff"><i class="fas fa-user-tie"></i> Staff</a></li>
                 <li><a href="#"><i class="fas fa-house-user"></i> Rooms</a></li>
                 <li><a href="#"><i class="fas fa-chart-bar"></i> Reports & Logs</a></li>
                 
@@ -150,7 +150,7 @@
                                 <tbody id="checkout-list">
                           		 <%
 								    // Retrieve the user list from the session attribute
-								    List<User> userList = (List<User>) session.getAttribute("usersOverview");
+								    List<User> userList = (List<User>) request.getAttribute("usersOverview");
 								    if (userList != null && !userList.isEmpty()) {
 								        for (User user : userList) {
 								%>
@@ -178,7 +178,7 @@
                     <div class="card upcoming-checkins">
                         <div class="card-header">
                             <h3>Latest Staff</h3>
-                            <a href="#" class="btn-link">View All</a>
+                            <a href="getStaff" class="btn-link">View All</a>
                         </div>
                         <div class="card-body">
                             <table>
@@ -194,7 +194,7 @@
                                 <tbody id="checkin-list">
                                      <%
 								    // Retrieve the user list from the session attribute
-								    List<Staff> staffList = (List<Staff>) session.getAttribute("staffOverview");
+								    List<Staff> staffList = (List<Staff>) request.getAttribute("staffOverview");
 								    if (staffList != null && !staffList.isEmpty()) {
 								        for (Staff staff : staffList) {
 									%>
@@ -239,7 +239,7 @@
                                 <tbody id="checkin-list">
                                      <%
 								    // Retrieve the user list from the session attribute
-								    List<Room> roomList = (List<Room>) session.getAttribute("roomOverview");
+								    List<Room> roomList = (List<Room>) request.getAttribute("roomOverview");
 								    if (roomList != null && !roomList.isEmpty()) {
 								        for (Room room : roomList) {
 									%>
@@ -272,6 +272,11 @@
             </div>
         </main>
     </div>
+    
+    <script>
+
+    
+    
     
  
 </body>
