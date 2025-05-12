@@ -1,9 +1,0 @@
-package com.user;
-
-public class DatabaseCon {
-
-	public DatabaseCon() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

@@ -47,6 +47,7 @@ public class UserDBUtil {
 	    return userList;
 	}
 	
+
 	public static boolean checkUsername(String username) {
 		
 		boolean msg = false;
@@ -179,7 +180,8 @@ public class UserDBUtil {
 		return msg;
 		
 	}
-
+	
+	
 	
 }
 
