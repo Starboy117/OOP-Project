@@ -25,14 +25,16 @@ public class roominsertServlet extends HttpServlet {
 		String[] featuresArray = request.getParameterValues("features");
 		String features = String.join(", ", featuresArray != null ? featuresArray : new String[0]);
 		String description = request.getParameter("description");
-
+		
+		System.out.println("Room number"+roomNumber);
+		
 		boolean isTrue = roomController.insertRoom(roomNumber, roomType, capacity, price, floor, status, features, description);
 
 		if (isTrue == true) {
-			String alertMessage = "Data insert Successful";
-			response.getWriter().println("<script>alert('" + alertMessage + "'); window.location.href='done.jsp';</script>");
+			RequestDispatcher dis2 = request.getRequestDispatcher("addRoom.jsp");
+			dis2.forward(request, response);
 		} else {
-			RequestDispatcher dis2 = request.getRequestDispatcher("wrong.jsp");
+			RequestDispatcher dis2 = request.getRequestDispatcher("addRoom.jsp");
 			dis2.forward(request, response);
 		}
 	}

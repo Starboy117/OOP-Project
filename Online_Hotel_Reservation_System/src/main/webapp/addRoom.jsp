@@ -60,7 +60,7 @@
         <div class="bg-white rounded shadow-sm p-6 max-w-5xl">
         
         
-            <form id="addRoomForm" action="roominsertServlet" method="post" class="space-y-6">
+            <form id="addRoomForm" action="roomInsert" method="post" class="space-y-6">
             
             
 

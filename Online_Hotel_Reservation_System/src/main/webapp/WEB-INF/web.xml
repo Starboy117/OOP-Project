@@ -62,14 +62,13 @@
 </servlet-mapping>
 
 <servlet>
-        <servlet-name>roominsertServlet</servlet-name>
+        <servlet-name>insertRoom</servlet-name>
         <servlet-class>com.Room.roominsertServlet</servlet-class>
     </servlet>
 
-    <!-- Servlet Mapping to map the URL to the servlet -->
     <servlet-mapping>
-        <servlet-name>roominsertServlet</servlet-name>
-        <url-pattern>/roominsertServlet</url-pattern>
+        <servlet-name>insertRoom</servlet-name>
+        <url-pattern>/roomInsert</url-pattern>
     </servlet-mapping>
 
 </web-app>
