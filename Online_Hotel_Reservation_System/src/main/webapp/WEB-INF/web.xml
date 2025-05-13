@@ -11,6 +11,8 @@
   	<url-pattern>/log</url-pattern>
   </servlet-mapping>
   
+  
+  
   <servlet>
   	<servlet-name>userInsert</servlet-name>
   	<servlet-class>com.user.userInsertServlet</servlet-class>
@@ -19,6 +21,8 @@
   	<servlet-name>userInsert</servlet-name>
   	<url-pattern>/insert</url-pattern>
   </servlet-mapping>
+  
+  
   
 <servlet>
   <servlet-name>userLogout</servlet-name>
@@ -31,6 +35,7 @@
 </servlet-mapping>
 
 
+
 <servlet>
 	<servlet-name>userUpdate</servlet-name>
 	<servlet-class>com.user.UpdateUserServlet</servlet-class>
@@ -40,6 +45,9 @@
 	<servlet-name>userUpdate</servlet-name>
 	<url-pattern>/updateUser</url-pattern>
 </servlet-mapping>
+
+
+
 
 <servlet>
 	<servlet-name>changePassword</servlet-name>
@@ -51,6 +59,9 @@
 	<url-pattern>/passwordChange</url-pattern>
 </servlet-mapping>
 
+
+
+
 <servlet>
 	<servlet-name>manageUsers</servlet-name>
 	<servlet-class>com.staff.userManageServlet</servlet-class>
@@ -60,6 +71,9 @@
 	<servlet-name>manageUsers</servlet-name>
 	<url-pattern>/getUsers</url-pattern>
 </servlet-mapping>
+
+
+
 
 <servlet>
 	<servlet-name>adminDash</servlet-name>
@@ -71,6 +85,9 @@
 	<url-pattern>/adminDashboard</url-pattern>
 </servlet-mapping>
 
+
+
+
 <servlet>
 	<servlet-name>manageStaff</servlet-name>
 	<servlet-class>com.staff.staffManageServlet</servlet-class>
@@ -80,6 +97,31 @@
 	<servlet-name>manageStaff</servlet-name>
 	<url-pattern>/getStaff</url-pattern>
 </servlet-mapping>
+
+
+
+<servlet>
+	<servlet-name>getSingleUser</servlet-name>
+	<servlet-class>com.staff.getSingleUserServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>getSingleUser</servlet-name>
+	<url-pattern>/singleUser</url-pattern>
+</servlet-mapping>
+
+
+
+<servlet>
+	<servlet-name>editUser</servlet-name>
+	<servlet-class>com.staff.editUserServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>editUser</servlet-name>
+	<url-pattern>/userEdit</url-pattern>
+</servlet-mapping>
+  
   
   
 </web-app>

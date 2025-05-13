@@ -407,6 +407,77 @@ public class staffDBUtill {
 		
 		return staffList;
 	}
+	
+	public static List<User> getSingleUser(int id){
+		
+		
+		
+		ArrayList userList = new ArrayList<>();
+		
+		try {
+			
+			con = DatabaseCon.getConnection();
+			
+			stmt=con.createStatement();
+			
+			String sql="select * from registered_user where UserID ='"+id+"'";
+			
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				
+				int user_id=rs.getInt(1);
+				String name = rs.getString(2);
+				String username= rs.getString(3);
+				String email=rs.getString(4);
+				String pass=rs.getString(5);
+				
+				User user = new User(user_id,name,username,email,pass);
+				
+				userList.add(user);
+				
+			}
+			
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return userList;
+	}
+	
+public static boolean updateUserDetails(int id,String name, String username, String email, String password) {
+		
+		boolean msg=false;
+		
+		
+		try {
+			
+			con=DatabaseCon.getConnection();
+			stmt = con.createStatement();
+			
+			String sql = "UPDATE registered_user SET Name='" + name + "', Username='" + username + "', email='" + email + "', password='"+password+"' WHERE UserID=" + id;
+
+			int rs = stmt.executeUpdate(sql);
+			
+			if(rs>0) {
+				
+				msg=true;
+			}
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return msg;
+	}
 
 	
 

@@ -22,7 +22,7 @@ public class staffManageServlet extends HttpServlet {
 		
 		List<Staff> staffList = staffDBUtill.getAllStaff();
 		
-		 System.out.println("Users fetched: " + staffList);
+		// System.out.println("Users fetched: " + staffList);
 
 
 	        if (staffList != null && !staffList.isEmpty()) {

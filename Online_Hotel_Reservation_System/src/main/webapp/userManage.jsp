@@ -111,8 +111,8 @@
 								                <td><%= user.getEmail() %></td>
 								                <td><%= user.getPassword() %></td>
 								                <td>
-								                	<a><button class="btn btn-success me-3">Edit</button></a>
-								                	<a><button class="btn btn-danger">Delete</button></a>
+								                	<a href="singleUser?userId=<%=user.getId()%>"><button class="btn btn-success me-3"><i class="fas fa-edit"></i> Edit</button></a>
+							                		<a><button class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button></a>
 								                </td>
 								            </tr>
 								<%

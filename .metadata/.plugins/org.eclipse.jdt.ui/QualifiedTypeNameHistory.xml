@@ -4,4 +4,5 @@
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="com.staff.staffDBUtill"/>
     <fullyQualifiedTypeName name="com.user.DatabaseCon"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
 </qualifiedTypeNameHistroy>
