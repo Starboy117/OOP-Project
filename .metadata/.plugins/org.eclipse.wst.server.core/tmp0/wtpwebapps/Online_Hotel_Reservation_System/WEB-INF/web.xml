@@ -40,6 +40,26 @@
 	<servlet-name>userUpdate</servlet-name>
 	<url-pattern>/updateUser</url-pattern>
 </servlet-mapping>
+
+<servlet>
+	<servlet-name>changePassword</servlet-name>
+	<servlet-class>com.user.changePasswordServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>changePassword</servlet-name>
+	<url-pattern>/passwordChange</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>manageUsers</servlet-name>
+	<servlet-class>com.staff.userManageServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>manageUsers</servlet-name>
+	<url-pattern>/getUsers</url-pattern>
+</servlet-mapping>
   
   
 </web-app>

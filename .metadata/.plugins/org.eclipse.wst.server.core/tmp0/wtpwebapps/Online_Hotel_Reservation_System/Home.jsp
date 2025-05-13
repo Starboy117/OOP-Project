@@ -28,7 +28,7 @@
     <div class="tabs">
       <ul class="nav" style="margin: 0%;">
         <li class="nav-item">
-          <a class="nav-link active custom" href="Home.html">Home</a>
+          <a class="nav-link active custom" href="Home.jsp">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link custom" href="#">About Us</a>

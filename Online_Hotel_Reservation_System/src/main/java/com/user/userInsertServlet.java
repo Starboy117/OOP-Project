@@ -59,7 +59,7 @@ public class userInsertServlet extends HttpServlet {
 			
 			if(msg==true) {
 				
-				response.sendRedirect("Login.jsp?success=1");
+				response.sendRedirect("Login.jsp");
 				
 			}
 			else {

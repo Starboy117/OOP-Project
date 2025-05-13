@@ -46,6 +46,7 @@
             <% String error = (String) request.getAttribute("error"); %>
 			<% if (error != null) { %>
 			  <p style="color:red;"><%= error %></p>
+			  <% session.removeAttribute("error");%>
 			<% } %>
             <div>
                 <input class="input1  rounded" type="text" placeholder="Name" name="name" id="name"><br>
@@ -54,7 +55,7 @@
                 <p id="msg2" style="color:red;"></p>
                 <input class="input1  rounded" type="email" placeholder="Email" name="email" id="email"><br>
                 <p id="msg3" style="color:red;"></p>
-                <input class="input1  rounded" type="text" placeholder="Password" name="password" id="password"><br>
+                <input class="input1  rounded" type="password" placeholder="Password" name="password" id="password"><br>
                 <p id="msg4" style="color:red;"></p>
                 <input class="input1  rounded" type="password" placeholder="Confirm Password" name="cPassword" id="cPassword"><br>
                 <p id="msg5" style="color:red;"></p>
