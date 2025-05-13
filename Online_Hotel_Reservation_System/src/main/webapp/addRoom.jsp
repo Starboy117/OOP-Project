@@ -58,7 +58,12 @@
         </div>
 
         <div class="bg-white rounded shadow-sm p-6 max-w-5xl">
-            <form id="addRoomForm" class="space-y-6">
+        
+        
+            <form id="addRoomForm" action="roominsertServlet" method="post" class="space-y-6">
+            
+            
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Room Number</label>
@@ -169,10 +174,7 @@
             const form = document.getElementById('addRoomForm');
             const successModal = document.getElementById('successModal');
             
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                successModal.classList.remove('hidden');
-            });
+            
         });
     </script>
 </body>

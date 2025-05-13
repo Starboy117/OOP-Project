@@ -1,6 +1,9 @@
 package com.Room;
 
+import com.user.DatabaseCon;
+
 import java.io.IOException;
+import javax.servlet.RequestDispatcher; 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,26 +13,27 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/roominsertServlet")
 public class roominsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-     
-    	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String roomNumber = request.getParameter("roomNumber");
 		String roomType = request.getParameter("roomType");
 		int capacity = Integer.parseInt(request.getParameter("capacity"));
 		double price = Double.parseDouble(request.getParameter("price"));
 		int floor = Integer.parseInt(request.getParameter("floor"));
 		String status = request.getParameter("status");
-		String features = request.getParameter("features");
+		String[] featuresArray = request.getParameterValues("features");
+		String features = String.join(", ", featuresArray != null ? featuresArray : new String[0]);
 		String description = request.getParameter("description");
-		
-				boolean isTrue = roomController.insertRoom(roomNumber, roomType, capacity, price, floor, status, features, description);
 
-				if (isTrue) {
-					response.sendRedirect("roomSuccess.jsp");
-				} else {
-					response.sendRedirect("roomInsertFail.jsp");
-				}
-			}
+		boolean isTrue = roomController.insertRoom(roomNumber, roomType, capacity, price, floor, status, features, description);
+
+		if (isTrue == true) {
+			String alertMessage = "Data insert Successful";
+			response.getWriter().println("<script>alert('" + alertMessage + "'); window.location.href='done.jsp';</script>");
+		} else {
+			RequestDispatcher dis2 = request.getRequestDispatcher("wrong.jsp");
+			dis2.forward(request, response);
+		}
 	}
-
+}
