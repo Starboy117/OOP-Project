@@ -124,4 +124,18 @@
   
   
   
+
+  
+
+<servlet>
+        <servlet-name>insertRoom</servlet-name>
+        <servlet-class>com.Room.roominsertServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>insertRoom</servlet-name>
+        <url-pattern>/roomInsert</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>
