@@ -13,9 +13,20 @@ public class PaymentDAO {
 			"INSERT INTO payment (reservation_id, amount, payment_method, card_name, card_number, expiry_date, cvv, mobile_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 	public void insertPayment(Payment payment) throws SQLException {
+		
+		try {
+			
+			Class.forName("com.mysql.jdbc.Driver");
+			
 		try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
 				PreparedStatement ps = connection.prepareStatement(INSERT_PAYMENT_SQL)) {
-			ps.setInt(1, payment.getReservationId());
+			
+			if (payment.getReservationId() == null) {
+				ps.setNull(1, java.sql.Types.INTEGER);
+			} else {
+				ps.setInt(1, payment.getReservationId());
+			}
+			
 			ps.setDouble(2, payment.getAmount());
 			ps.setString(3, payment.getPaymentMethod());
 			ps.setString(4, payment.getCardName());
@@ -26,7 +37,16 @@ public class PaymentDAO {
 
 			ps.executeUpdate();
 		} catch (Exception e) {
+			
+			System.out.println("database con failed!");
 			e.printStackTrace();
 		}
+	
+	}catch(Exception e) {
+		
+		e.printStackTrace();
+		
+	}
+		
 	}
 }
