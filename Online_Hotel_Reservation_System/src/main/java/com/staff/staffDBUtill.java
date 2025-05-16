@@ -84,7 +84,7 @@ public class staffDBUtill {
 
 	      
 	        Statement stmt3 = con.createStatement();
-	        String sql3 = "SELECT COUNT(*) AS totalRoom FROM room";
+	        String sql3 = "SELECT COUNT(*) AS totalRoom FROM rooms";
 	        ResultSet rs3 = stmt3.executeQuery(sql3);
 	        if (rs3.next()) {
 	            objList.add(rs3.getInt("totalRoom"));
@@ -412,7 +412,7 @@ public class staffDBUtill {
 		
 		
 		
-		ArrayList userList = new ArrayList<>();
+		ArrayList<User> userList = new ArrayList<>();
 		
 		try {
 			
@@ -448,7 +448,188 @@ public class staffDBUtill {
 		return userList;
 	}
 	
-public static boolean updateUserDetails(int id,String name, String username, String email, String password) {
+	
+	
+		
+	public static boolean updateUserDetails(int id,String name, String username, String email, String password) {
+			
+			boolean msg=false;
+			
+			
+			try {
+				
+				con=DatabaseCon.getConnection();
+				stmt = con.createStatement();
+				
+				String sql = "UPDATE registered_user SET Name='" + name + "', Username='" + username + "', email='" + email + "', password='"+password+"' WHERE UserID=" + id;
+	
+				int rs = stmt.executeUpdate(sql);
+				
+				if(rs>0) {
+					
+					msg=true;
+				}
+				
+			}
+			catch(Exception e) {
+				
+				e.printStackTrace();
+			}
+			
+			
+			
+			
+			return msg;
+		}
+	
+	
+	
+	
+	
+	public static boolean deleteUser(int id) {
+		
+		boolean msg = false;
+		
+		try {
+			
+			con = DatabaseCon.getConnection();
+			
+			stmt = con.createStatement();
+			
+			String sql = "Delete from registered_user where UserID='"+id+"'";
+			
+			int rs = stmt.executeUpdate(sql);
+			
+			if(rs>0) {
+				
+				msg=true;
+			}
+			
+			
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		return msg;
+	}
+	
+	
+	
+	
+	
+	public static boolean deleteStaff(int id) {
+		
+		boolean msg = false;
+		
+		try {
+			
+			con = DatabaseCon.getConnection();
+			
+			stmt = con.createStatement();
+			
+			String sql = "Delete from staff where staffId='"+id+"'";
+			
+			int rs = stmt.executeUpdate(sql);
+			
+			if(rs>0) {
+				
+				msg=true;
+			}
+			
+			
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		return msg;
+	}
+	
+	
+	public static List<Staff> getSingleStaff(int id){
+		
+		
+		
+		ArrayList<Staff> staffList = new ArrayList<>();
+		
+		try {
+			
+			con = DatabaseCon.getConnection();
+			
+			stmt=con.createStatement();
+			
+			String sql="select * from staff where staffId ='"+id+"'";
+			
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()) {
+				
+				int user_id=rs.getInt(1);
+				String name = rs.getString(2);
+				String username= rs.getString(3);
+				String email=rs.getString(4);
+				String pass=rs.getString(5);
+				String role=rs.getString(6);
+				
+				Staff user = new Staff(user_id,name,username,email,pass,role);
+				
+				staffList.add(user);
+				
+			}
+			
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return staffList;
+	}
+	
+	
+	
+
+	public static boolean checkUsername(String username) {
+		
+		boolean msg = false;
+		
+		try {
+			
+			con=DatabaseCon.getConnection();
+			stmt=con.createStatement();
+			
+			String sql="Select * from staff where username='"+username+"'";
+			
+			rs = stmt.executeQuery(sql);
+			
+			if(!rs.next()) {
+				
+				msg=true;
+			}
+			else {
+				
+				msg=false;
+			}
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		return msg;
+	}
+	
+	
+	
+	public static boolean updateStaffDetails(int id,String name, String username, String email, String password, String role) {
 		
 		boolean msg=false;
 		
@@ -458,7 +639,7 @@ public static boolean updateUserDetails(int id,String name, String username, Str
 			con=DatabaseCon.getConnection();
 			stmt = con.createStatement();
 			
-			String sql = "UPDATE registered_user SET Name='" + name + "', Username='" + username + "', email='" + email + "', password='"+password+"' WHERE UserID=" + id;
+			String sql = "UPDATE staff SET name='" + name + "', username='" + username + "', email='" + email + "', password='"+password+"', role='"+role+"' WHERE staffId=" + id;
 
 			int rs = stmt.executeUpdate(sql);
 			
@@ -478,6 +659,42 @@ public static boolean updateUserDetails(int id,String name, String username, Str
 		
 		return msg;
 	}
+	
+	
+	public static boolean insertStaffDetails(String name, String userName, String email, String password,String role) {
+		boolean msg = false;
+		
+		
+		
+		try {
+			
+			con = DatabaseCon.getConnection();
+			stmt = con.createStatement();
+	        
+	        String sql="Insert into staff values(0,'"+name+"','"+userName+"','"+email+"','"+password+"','"+role+"')";
+	        
+	        int rs = stmt.executeUpdate(sql);
+	        
+	        if(rs>0) {
+	        	
+	        	msg = true;
+	        }
+	        else {
+	        	
+	        	msg = false;
+	        }
+	        
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		return msg;
+	}
+	
 
 	
 

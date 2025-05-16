@@ -15,8 +15,7 @@
     String errorMessage = (String) session.getAttribute("errorMessage");
     
     // Clear the messages after retrieving them
-    session.removeAttribute("successMessage");
-    session.removeAttribute("errorMessage");
+    
 %>
 
 <html lang="en">
@@ -33,6 +32,28 @@
     
 </head>
 <body>
+
+<%
+    String msg = (String) request.getAttribute("successMessage");
+ 
+
+    if ("success".equals(msg)) {
+	%>
+	    <div class="alert alert-success alert-dismissible fade show" role="alert">
+	        Staff added successfully!
+	        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	    </div>
+	<%
+	    } else if ("error".equals(msg)) {
+	%>
+	    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+	        Something went wrong!
+	        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	    </div>
+	<%
+			
+	    }
+    %>
     <div class="container1">
         <nav class="sidebar">
             <div class="logo">
@@ -79,21 +100,14 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <% if(successMessage != null && !successMessage.isEmpty()) { %>
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <%= successMessage %>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <% } %>
+                    <% String error = (String) request.getAttribute("error"); %>
+					<% if (error != null) { %>
+					  <p style="color:red;"><%= error %></p>
+					  <% session.removeAttribute("error");%>
+					<% } %>
+                       
 
-                        <% if(errorMessage != null && !errorMessage.isEmpty()) { %>
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <%= errorMessage %>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <% } %>
-
-                        <form action="addStaff" method="post" class="needs-validation" novalidate>
+                        <form action="staffAdd" method="post" class="needs-validation" novalidate>
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="name" class="form-label">Full Name</label>

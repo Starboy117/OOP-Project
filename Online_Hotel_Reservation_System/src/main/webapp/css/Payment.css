@@ -1,0 +1,161 @@
+body {
+  font-family: 'Cinzel';
+  margin: 0;
+  padding-top: 80px;
+  background: #f8f9fa;
+}
+
+.payment-wrapper {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.payment-wrapper h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+form {
+  flex: 1 1 48%;
+}
+
+.input-details,
+.input-group,
+.input-row {
+  margin-bottom: 15px;
+}
+
+.input-details label,
+.input-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.input-details input,
+.input-group input,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #5a2c0d; /* Brown input text */
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.input-row .input-details {
+  flex: 1;
+}
+
+button[type="submit"] {
+  margin-top: 20px;
+  background-color: #b8772c;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #9c621a;
+}
+
+#card-details,
+#ezcash-details {
+  margin-top: 20px;
+}
+
+/* Order Summary Styling */
+.order-summary {
+  flex: 1 1 45%;
+  background-color: #fef6f2;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.order-summary h3 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.order-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.order-item-details {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+.order-summary .subtotal,
+.order-summary .shipping,
+.order-summary .total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.order-summary .total {
+  font-size: 18px;
+  font-weight: bold;
+  color: #b8772c;
+}
+
+ .tabs {
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-link.custom {
+    color: #422100;
+    font-size: 22px;
+    font-weight: 400;
+    padding-left: 50px;
+  }
+  
+  .nav-link.custom:hover,
+  .nav-link.custom.active {
+    color: #d6ab5b;
+  }
+
+  .container.custom{
+
+    width: 30%;
+    height: auto;
+    align-items: center;
+    text-align: center;
+   
+  }

@@ -10,11 +10,11 @@
     String role = (String) session.getAttribute("role");
     String name = (String) session.getAttribute("name");
     
-    // Check for messages from redirect
+  
     String successMessage = (String) session.getAttribute("successMessage");
     String errorMessage = (String) session.getAttribute("errorMessage");
     
-    // Clear the messages after retrieving them
+    
     session.removeAttribute("successMessage");
     session.removeAttribute("errorMessage");
 %>
@@ -74,20 +74,25 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="updateStaff" method="post" class="needs-validation" novalidate>
-                            <input type="hidden" name="id" value="1">
+                    <% String error = (String) request.getAttribute("userEditError"); %>
+						<% if (error != null) { %>
+			 			 <p style="color:red;"><%= error %></p>
+					<% } %>
+                        <form action="staffEdit" method="post" class="needs-validation" novalidate>
+                            <input type="hidden" name="id" value="${user_id}">
+                            <input type="hidden" name="initial_username" value="${user_username}">
                             
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="name" class="form-label">Full Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" value="John Doe" required>
+                                    <input type="text" class="form-control" id="name" name="name" value="${user_name}" required>
                                     <div class="invalid-feedback">
                                         Please enter the staff member's full name.
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username" name="username" value="johndoe" required>
+                                    <input type="text" class="form-control" id="username" name="username" value="${user_username}" required>
                                     <div class="invalid-feedback">
                                         Please enter a username.
                                     </div>
@@ -97,7 +102,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" value="john@example.com" required>
+                                    <input type="email" class="form-control" id="email" name="email" value="${user_email}" required>
                                     <div class="invalid-feedback">
                                         Please enter a valid email address.
                                     </div>
@@ -105,7 +110,7 @@
                                 <div class="col-md-6">
                                     <label for="password" class="form-label">Password</label>
                                     <div class="input-group">
-                                        <input type="password" class="form-control" id="password" name="password" required>
+                                        <input type="password" class="form-control" id="password" name="password" value="${user_password}" required>
                                        
                                     </div>
                                     <div class="invalid-feedback">
@@ -117,13 +122,13 @@
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="role" class="form-label">Role</label>
-                                    <select class="form-control" id="role" name="role" required>
-                                        <option value="" disabled>Select a role</option>
-                                        <option value="System admin" selected>System Administrator</option>
-                                        <option value="Receptionist">Receptionist</option>
-                                        <option value="Customer support staff">Customer Support Agent</option>
-                                        
-                                    </select>
+                                   <select class="form-control" id="role" name="role" required>
+									    <option value="" disabled ${empty user_role ? 'selected' : ''}>Select a role</option>
+									    <option value="System admin" ${user_role == 'System admin' ? 'selected' : ''}>System Administrator</option>
+									    <option value="Receptionist" ${user_role == 'Receptionist' ? 'selected' : ''}>Receptionist</option>
+									    <option value="Customer support staff" ${user_role == 'Customer support staff' ? 'selected' : ''}>Customer Support Agent</option>
+									</select>
+
                                     <div class="invalid-feedback">
                                         Please select a role.
                                     </div>

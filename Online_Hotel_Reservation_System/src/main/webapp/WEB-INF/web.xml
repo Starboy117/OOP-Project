@@ -121,13 +121,76 @@
 	<servlet-name>editUser</servlet-name>
 	<url-pattern>/userEdit</url-pattern>
 </servlet-mapping>
-  
-  
-  
 
-  
+
+
 
 <servlet>
+	<servlet-name>userDelete</servlet-name>
+	<servlet-class>com.staff.deleteUserServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>userDelete</servlet-name>
+	<url-pattern>/deleteUser</url-pattern>
+</servlet-mapping>
+
+
+
+
+<servlet>
+	<servlet-name>staffDelete</servlet-name>
+	<servlet-class>com.staff.deleteStaffServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>staffDelete</servlet-name>
+	<url-pattern>/deleteStaff</url-pattern>
+</servlet-mapping>
+
+
+
+<servlet>
+	<servlet-name>getSingleStaff</servlet-name>
+	<servlet-class>com.staff.getSingleStaffServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>getSingleStaff</servlet-name>
+	<url-pattern>/singleStaff</url-pattern>
+</servlet-mapping>
+
+
+
+<servlet>
+	<servlet-name>editStaff</servlet-name>
+	<servlet-class>com.staff.editStaffServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>editStaff</servlet-name>
+	<url-pattern>/staffEdit</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+	<servlet-name>addStaff</servlet-name>
+	<servlet-class>com.staff.addStaffServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>addStaff</servlet-name>
+	<url-pattern>/staffAdd</url-pattern>
+</servlet-mapping>
+
+  
+  
+  
+  
+
+  
+
+	<servlet>
         <servlet-name>insertRoom</servlet-name>
         <servlet-class>com.Room.roominsertServlet</servlet-class>
     </servlet>
@@ -135,6 +198,19 @@
     <servlet-mapping>
         <servlet-name>insertRoom</servlet-name>
         <url-pattern>/roomInsert</url-pattern>
+    </servlet-mapping>
+    
+    
+    
+    
+	<servlet>
+        <servlet-name>payment</servlet-name>
+        <servlet-class>com.payment.PaymentServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>payment</servlet-name>
+        <url-pattern>/pay</url-pattern>
     </servlet-mapping>
 
 

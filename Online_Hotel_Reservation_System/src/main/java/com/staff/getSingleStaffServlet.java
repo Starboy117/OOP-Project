@@ -13,39 +13,44 @@ import javax.servlet.http.HttpServletResponse;
 import com.user.User;
 
 
-@WebServlet("/getSingleUserServlet")
-public class getSingleUserServlet extends HttpServlet {
+@WebServlet("/getSingleStaffServlet")
+public class getSingleStaffServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		
 		String userId = request.getParameter("userId");
 		
 		int id = Integer.parseInt(userId);
 		
-		List<User> user = staffDBUtill.getSingleUser(id);
+		List<Staff> user = staffDBUtill.getSingleStaff(id);
+		
+		System.out.println("Staff : " + user);
 		
 		try {
 			
 			if (user != null && !user.isEmpty()) {
 				
-				User user1 = user.get(0);
+				Staff user1 = user.get(0);
 				
 				request.setAttribute("user_id", user1.getId());
 				request.setAttribute("user_name", user1.getName());
 				request.setAttribute("user_username", user1.getUsername());
 				request.setAttribute("user_email", user1.getEmail());
 				request.setAttribute("user_password", user1.getPassword());
+				request.setAttribute("user_role", user1.getRole());
 				
-				
-				RequestDispatcher dis = request.getRequestDispatcher("editUser.jsp");
+				RequestDispatcher dis = request.getRequestDispatcher("editStaff.jsp");
             	dis.forward(request, response);
 			}
 			else {
+				
 				request.setAttribute("getUser_error", "Something went wrong!");
-				RequestDispatcher dis = request.getRequestDispatcher("editUser.jsp");
+				RequestDispatcher dis = request.getRequestDispatcher("editStaff.jsp");
             	dis.forward(request, response);
+				
 				
 			}
 		}
@@ -54,5 +59,7 @@ public class getSingleUserServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 }

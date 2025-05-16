@@ -8,26 +8,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.user.UserDBUtil;
 
-@WebServlet("/editUserServlet")
-public class editUserServlet extends HttpServlet {
+
+@WebServlet("/editStaffServlet")
+public class editStaffServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
 		
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		String role = request.getParameter("role");
 		String sUserName = request.getParameter("initial_username");
+		
 		
 		int user_id = Integer.parseInt(id);
 		
@@ -37,12 +36,13 @@ public class editUserServlet extends HttpServlet {
 		if (name == null || name.trim().isEmpty() ||
 		    username == null || username.trim().isEmpty() ||
 		    email == null || email.trim().isEmpty() || 
-		    password == null || password.trim().isEmpty()) {
+		    password == null || password.trim().isEmpty()
+		    || role == null || role.trim().isEmpty()) {
 		    
 		  
 		   
 		    request.setAttribute("userEditError", "**All fields are required.");
-		    RequestDispatcher dis = request.getRequestDispatcher("editUser.jsp");
+		    RequestDispatcher dis = request.getRequestDispatcher("editStaff.jsp");
         	dis.forward(request, response);
 			
 		    
@@ -52,7 +52,7 @@ public class editUserServlet extends HttpServlet {
 		if(!email.matches(emailRegex)) {
 			
 			 request.setAttribute("userEditError", "**Invalid email format");
-			 RequestDispatcher dis = request.getRequestDispatcher("editUser.jsp");
+			 RequestDispatcher dis = request.getRequestDispatcher("editStaff.jsp");
          	dis.forward(request, response);
 				
 			 
@@ -65,12 +65,22 @@ public class editUserServlet extends HttpServlet {
         if(password.length()<6) {
         	
         	request.setAttribute("userEditError", "**Password too short.");
-        	RequestDispatcher dis = request.getRequestDispatcher("editUser.jsp");
+        	RequestDispatcher dis = request.getRequestDispatcher("editStaff.jsp");
         	dis.forward(request, response);
 			
 		    
 		    return; 
         	
+        	
+        }
+        
+        if(!username.endsWith("@tendura_staff")) {
+        	
+        	
+        	request.setAttribute("userEditError", "**Invalid username format. Username should end with '@tendura_staff'.");
+        	RequestDispatcher dis = request.getRequestDispatcher("editStaff.jsp");
+        	dis.forward(request, response);
+			
         	
         }
 		
@@ -81,7 +91,7 @@ public class editUserServlet extends HttpServlet {
 		
 		
 		boolean isTrue;
-		boolean check = UserDBUtil.checkUsername(username);
+		boolean check = staffDBUtill.checkUsername(username);
 		
 		if(sUserName.equals(username)) {
 			
@@ -92,7 +102,7 @@ public class editUserServlet extends HttpServlet {
 			
 			if(check == true) {
 			
-				isTrue=staffDBUtill.updateUserDetails(user_id, name, username, email, password);
+				isTrue=staffDBUtill.updateStaffDetails(user_id, name, username, email, password,role);
 			
 				if(isTrue == true) {
 					
@@ -101,8 +111,9 @@ public class editUserServlet extends HttpServlet {
 					request.setAttribute("user_username", username);
 					request.setAttribute("user_email", email);
 					request.setAttribute("user_password", password);
+					request.setAttribute("user_role", role);
 					
-					RequestDispatcher dis = request.getRequestDispatcher("editUser.jsp");
+					RequestDispatcher dis = request.getRequestDispatcher("editStaff.jsp");
 	            	dis.forward(request, response);
 				
 					
@@ -111,7 +122,7 @@ public class editUserServlet extends HttpServlet {
 					
 					
 					request.setAttribute("userEditError", "**Something Went wrong!");
-					RequestDispatcher dis = request.getRequestDispatcher("editUser.jsp");
+					RequestDispatcher dis = request.getRequestDispatcher("editStaff.jsp");
 	            	dis.forward(request, response);
 					
 				}
@@ -120,7 +131,7 @@ public class editUserServlet extends HttpServlet {
 			else {
 				
 				request.setAttribute("userEditError", "**Username already taken");
-				RequestDispatcher dis = request.getRequestDispatcher("editUser.jsp");
+				RequestDispatcher dis = request.getRequestDispatcher("editStaff.jsp");
             	dis.forward(request, response);
 				
 				
@@ -137,5 +148,9 @@ public class editUserServlet extends HttpServlet {
 		
 		
 	}
+	
+	
+		
+	
 
 }

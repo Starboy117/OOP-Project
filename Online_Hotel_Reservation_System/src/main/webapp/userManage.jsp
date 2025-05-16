@@ -39,6 +39,31 @@
     
 </head>
 <body>
+
+	<%
+    String msg = (String) session.getAttribute("successMessage");
+ 
+
+    if ("success".equals(msg)) {
+	%>
+	    <div class="alert alert-success alert-dismissible fade show" role="alert">
+	        User Deletion successful!
+	        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	    </div>
+	<%
+	    } else if ("error".equals(msg)) {
+	%>
+	    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+	        Something went wrong!
+	        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	    </div>
+	<%
+			
+	    }
+    
+    session.removeAttribute("successMessage");
+	%>
+	
     <div class="container1">
         <nav class="sidebar">
             <div class="logo">
@@ -112,7 +137,37 @@
 								                <td><%= user.getPassword() %></td>
 								                <td>
 								                	<a href="singleUser?userId=<%=user.getId()%>"><button class="btn btn-success me-3"><i class="fas fa-edit"></i> Edit</button></a>
-							                		<a><button class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button></a>
+							                		
+													
+													<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal_<%=user.getId()%>">
+													    <i class="fas fa-trash-alt"></i> Delete User
+													</button>
+													
+													
+													<div class="modal fade" id="confirmDeleteModal_<%=user.getId()%>" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+													  <div class="modal-dialog">
+													    <div class="modal-content">
+													      <div class="modal-header bg-danger text-white">
+													        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+													        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+													      </div>
+													      <div class="modal-body">
+													        Are you sure you want to delete this user? This action cannot be undone.
+													      </div>
+													      <div class="modal-footer">
+													        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+													
+													      
+													        <form action="deleteUser" method="post">
+													          <input type="hidden" name="id" value="<%=user.getId()%>">
+													          <button type="submit" class="btn btn-danger">Delete</button>
+													        </form>
+													      </div>
+													    </div>
+													  </div>
+													</div>
+
+
 								                </td>
 								            </tr>
 								<%
@@ -133,6 +188,14 @@
                  </div>
         
         </main>
+        
+     
+		</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+        
             
 </body>
 

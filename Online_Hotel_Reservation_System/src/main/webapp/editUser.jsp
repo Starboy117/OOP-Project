@@ -10,11 +10,11 @@
     String role = (String) session.getAttribute("role");
     String name = (String) session.getAttribute("name");
     
-    // Check for messages from redirect
+   
     String successMessage = (String) session.getAttribute("successMessage");
     String errorMessage = (String) session.getAttribute("errorMessage");
     
-    // Clear the messages after retrieving them
+   
     session.removeAttribute("successMessage");
     session.removeAttribute("errorMessage");
     
@@ -76,6 +76,10 @@
                         </div>
                     </div>
                     <div class="card-body">
+                    <% String error = (String) request.getAttribute("userEditError"); %>
+						<% if (error != null) { %>
+			 			 <p style="color:red;"><%= error %></p>
+					<% } %>
                         <form action="userEdit" method="post" class="needs-validation" novalidate>
                             <input type="hidden" name="id" value="${user_id}">
                             <input type="hidden" name="initial_username" value="${user_username}">
@@ -134,5 +138,9 @@
             </div>
         </main>
     </div>
+    
+    
+
+    
 </body>
 </html>
