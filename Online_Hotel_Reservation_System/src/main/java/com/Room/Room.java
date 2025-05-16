@@ -21,7 +21,23 @@ public class Room {
         this.status = status;
     }
     
+
     
+    
+
+	public Room(String roomNumber, String roomType, int capacity, double price, String features, String description) {
+	
+		this.roomNumber = roomNumber;
+		this.roomType = roomType;
+		this.capacity = capacity;
+		this.price = price;
+		this.features = features;
+		this.description = description;
+	}
+
+
+
+
 
 	public int getRoomId() {
 		return roomId;

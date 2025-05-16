@@ -183,6 +183,17 @@
 	<url-pattern>/staffAdd</url-pattern>
 </servlet-mapping>
 
+
+<servlet>
+	<servlet-name>roomBook</servlet-name>
+	<servlet-class>com.Room.BookRoomServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>roomBook</servlet-name>
+	<url-pattern>/bookRoom</url-pattern>
+</servlet-mapping>
+
   
   
   

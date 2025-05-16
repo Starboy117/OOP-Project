@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tendura</title>
+    <title>Tendura - Login</title>
     <link rel="icon" href="images/tendura1.png" type="image/png" />
     <link href="css/login.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -63,7 +63,7 @@
       <hr style="width: 98%; border: 2px #422100;" class="mb-5">
     </center>
     <div class="container">
-      <p class="mb-2">ï¿½ 2025 Tendura Hotel. All rights reserved.</p>
+      <p class="mb-2">© 2025 Tendura Hotel. All rights reserved.</p>
       <p class="mb-3">
         <a href="#" class="text-brown text-decoration-none">Privacy Policy</a> | 
         <a href="#" class="text-brown text-decoration-none">Terms of Service</a>

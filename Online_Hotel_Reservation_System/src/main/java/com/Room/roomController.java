@@ -3,6 +3,9 @@ package com.Room;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.user.DatabaseCon;
 
 public class roomController {
@@ -35,5 +38,44 @@ public class roomController {
         }
 
         return issuccess;
+    }
+    
+    
+    public static List<Room> getAvailableRooms(String checkIn,String checkOut){
+    	
+    	ArrayList<Room> roomList = new ArrayList<>();
+    	
+    	try {
+    		
+    		
+    		con=DatabaseCon.getConnection();
+    		
+    		stmt=con.createStatement();
+    		
+    		String sql="SELECT * FROM rooms r WHERE r.room_id NOT IN (SELECT b.room_id FROM reservation b WHERE b.check_in_date < '"+checkIn+"' AND b.check_out_date > '"+checkOut+"')";
+    				
+    		rs = stmt.executeQuery(sql);
+    		
+    		while(rs.next()) {
+    			
+    			String roomNum = rs.getString(2);
+    			String roomtype = rs.getString(3);
+    			int cap = rs.getInt(4);
+    			double price =rs.getDouble(5);
+    			String features = rs.getString(8);
+    			String description = rs.getString(9);
+    			
+    			Room room = new Room(roomNum,roomtype,cap,price,features,description);
+    			
+    			roomList.add(room);
+    		}
+    		
+    	}
+    	catch(Exception e) {
+    		
+    		e.printStackTrace();
+    	}
+    	
+    	return roomList;
     }
 }
