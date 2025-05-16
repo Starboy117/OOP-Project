@@ -21,12 +21,22 @@ public class BookRoomServlet extends HttpServlet {
 	    
 	    String checkIn = request.getParameter("checkIn");
 	    String checkOut = request.getParameter("checkOut");
+	    String roomType = request.getParameter("roomType");
+	    
+	    if (roomType == null || roomType.trim().isEmpty()) {
+	        roomType = "all"; // Default to "all"
+	    }
 
+
+	    
+	    
+	    
 	    try {
-	        List<Room> roomList = roomController.getAvailableRooms(checkIn, checkOut);
+	        List<Room> roomList = roomController.getAvailableRooms(checkIn, checkOut,roomType);
 
 	        if (roomList != null && !roomList.isEmpty()) {
 	            request.setAttribute("rooms", roomList);
+	          
 	            RequestDispatcher dis = request.getRequestDispatcher("book_room.jsp");
 	            dis.forward(request, response);
 	        } else {

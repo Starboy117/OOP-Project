@@ -67,17 +67,30 @@
 			        
 					     <% 
 						    List<Room> roomList = (List<Room>) request.getAttribute("rooms");
+					     
 						    Integer nights = (Integer) request.getAttribute("nights"); 
 						    if (roomList != null && !roomList.isEmpty()) {
 						        for (Room room : roomList) {
+						        
+						        
+						            String roomType = room.getRoomType().trim().toLowerCase();
+						            String imageUrl;
+						            if (roomType.equals("suite")) {
+						                imageUrl = "https://images.pexels.com/photos/2631746/pexels-photo-2631746.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+						            } else {
+						                imageUrl = "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+						            }
+						        
+						        
+
 						%>
 						<div class="room-card">
 						    <div class="room-image">
-						        <img src="#" alt="<%= room.getRoomType() %>">
+						        <img src="<%=imageUrl %>" alt="<%= room.getRoomType() %>">
 						        <div class="room-price-tag">$<%= room.getPrice() %>/night</div>
 						    </div>
 						    <div class="room-details">
-						        <h3><%= room.getRoomNumber() %> Room</h3>
+						        <h3><%= room.getRoomNumber() %> Room  (<%=room.getRoomType() %>)</h3>
 						        <p class="room-description"><%= room.getDescription() %></p>
 						
 						        <div class="total-price">

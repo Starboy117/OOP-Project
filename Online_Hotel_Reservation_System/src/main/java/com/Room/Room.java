@@ -25,8 +25,9 @@ public class Room {
     
     
 
-	public Room(String roomNumber, String roomType, int capacity, double price, String features, String description) {
+	public Room(int roomId,String roomNumber, String roomType, int capacity, double price, String features, String description) {
 	
+		this.roomId = roomId;
 		this.roomNumber = roomNumber;
 		this.roomType = roomType;
 		this.capacity = capacity;
