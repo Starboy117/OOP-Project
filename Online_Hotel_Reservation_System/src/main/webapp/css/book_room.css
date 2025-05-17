@@ -1,6 +1,7 @@
 :root {
-    --primary: #1e3a8a;
-    --primary-dark: #1e3a8a;
+--primary: #422100;
+--primary-dark: #422100;
+
     --gray-50: #f9fafb;
     --gray-100: #f3f4f6;
     --gray-200: #e5e7eb;
@@ -291,4 +292,13 @@ h2 {
     text-align: center;
     color: var(--gray-300);
     font-size: 0.875rem;
+}
+
+.no-rooms-available {
+  min-height: 500px; 
+  font-size: 3rem;
+  color: #422100;
+  font-weight: bold;
+  margin:auto;
+
 }

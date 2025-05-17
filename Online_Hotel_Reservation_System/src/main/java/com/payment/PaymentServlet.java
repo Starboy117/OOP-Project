@@ -24,7 +24,7 @@ public class PaymentServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        Integer reservationId = null;
+    
         double amount = Double.parseDouble(request.getParameter("amount"));
         String method = request.getParameter("payment_method");
 
@@ -32,7 +32,6 @@ public class PaymentServlet extends HttpServlet {
         
  
       
-        payment.setReservationId(reservationId);
         payment.setAmount(amount);
         payment.setPaymentMethod(method);
 
@@ -48,7 +47,7 @@ public class PaymentServlet extends HttpServlet {
         try {
         	
         	System.out.println("Inserting Payment:");
-        	System.out.println("Reservation ID: " + reservationId);
+
         	System.out.println("Amount: " + amount);
         	System.out.println("Method: " + method);
 

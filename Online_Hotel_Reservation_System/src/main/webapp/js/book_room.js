@@ -101,8 +101,15 @@ function updateNightsCount() {
     const checkIn = new Date(checkInInput.value);
     const checkOut = new Date(checkOutInput.value);
     const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+
     nightsCount.textContent = `${nights} night${nights !== 1 ? 's' : ''} selected`;
+
+    // Update all hidden nights inputs
+    document.querySelectorAll("input[id^='nights-hidden-']").forEach(input => {
+        input.value = nights;
+    });
 }
+
 
 /*function searchRooms() {
     loadingElement.classList.remove('hidden');
@@ -151,5 +158,28 @@ function updateNightsCount() {
     `).join('');
 }
 */
+
+function setNightsBeforeSubmit(roomNumber) {
+    const checkIn = new Date(document.getElementById('check-in').value);
+    const checkOut = new Date(document.getElementById('check-out').value);
+    const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+
+    document.getElementById('nights').value = nights;
+    return true; // allow form to submit
+}
+
+
+
+
+function submitBooking(roomNumber) {
+    const checkIn = new Date(document.getElementById('check-in').value);
+    const checkOut = new Date(document.getElementById('check-out').value);
+    const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+
+    const nightsInput = document.getElementById(`nights-hidden-${roomNumber}`);
+    nightsInput.value = nights;
+
+    document.getElementById(`bookForm-${roomNumber}`).submit();
+}
 
 

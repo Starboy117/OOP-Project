@@ -10,7 +10,7 @@ public class PaymentDAO {
 	private String jdbcPassword = "parasite";
 
 	private static final String INSERT_PAYMENT_SQL = 
-			"INSERT INTO payment (reservation_id, amount, payment_method, card_name, card_number, expiry_date, cvv, mobile_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+			"INSERT INTO payment (amount, payment_method, card_name, card_number, expiry_date, cvv, mobile_number) VALUES ( ?, ?, ?, ?, ?, ?, ?)";
 
 	public void insertPayment(Payment payment) throws SQLException {
 		
@@ -21,19 +21,15 @@ public class PaymentDAO {
 		try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
 				PreparedStatement ps = connection.prepareStatement(INSERT_PAYMENT_SQL)) {
 			
-			if (payment.getReservationId() == null) {
-				ps.setNull(1, java.sql.Types.INTEGER);
-			} else {
-				ps.setInt(1, payment.getReservationId());
-			}
+		
 			
-			ps.setDouble(2, payment.getAmount());
-			ps.setString(3, payment.getPaymentMethod());
-			ps.setString(4, payment.getCardName());
-			ps.setString(5, payment.getCardNumber());
-			ps.setString(6, payment.getExpiryDate());
-			ps.setString(7, payment.getCvv());
-			ps.setString(8, payment.getMobileNumber());
+			ps.setDouble(1, payment.getAmount());
+			ps.setString(2, payment.getPaymentMethod());
+			ps.setString(3, payment.getCardName());
+			ps.setString(4, payment.getCardNumber());
+			ps.setString(5, payment.getExpiryDate());
+			ps.setString(6, payment.getCvv());
+			ps.setString(7, payment.getMobileNumber());
 
 			ps.executeUpdate();
 		} catch (Exception e) {

@@ -1,5 +1,18 @@
 
 <!DOCTYPE html>
+
+
+<%
+
+
+String roomId = request.getParameter("roomId");
+String amount = request.getParameter("amount");
+String nights = request.getParameter("nights");
+
+double total = Double.parseDouble(amount)*Integer.parseInt(nights);
+
+
+%>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -55,14 +68,8 @@
 			
 			<div class = "input-details">
 			
-				<label for = "reservation_id">Reservation ID</label>
-				<input type = "number" id= "reservation_id" name = "reservation_id" value="" disabled required>
-			</div>
-			
-			<div class = "input-details">
-			
 				<label for = "amount">Amount(LKR)</label>
-				<input type = "number" id = "amount" name="amount" required>
+				<input type = "number" id = "amount" name="amount" value="<%=total%>" required readonly>
 			</div>
 			
 			<div class = "input-details">

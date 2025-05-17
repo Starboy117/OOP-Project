@@ -3,7 +3,6 @@ package com.payment;
 public class Payment {
 	
 	private int paymentId;
-    private Integer reservationId;
     private double amount;
     private String paymentMethod;
     private String cardName;
@@ -19,12 +18,7 @@ public class Payment {
 	public void setPaymentId(int paymentId) {
 		this.paymentId = paymentId;
 	}
-	public Integer getReservationId() {
-		return reservationId;
-	}
-	public void setReservationId(Integer reservationId) {
-		this.reservationId = reservationId;
-	}
+	
 	public double getAmount() {
 		return amount;
 	}

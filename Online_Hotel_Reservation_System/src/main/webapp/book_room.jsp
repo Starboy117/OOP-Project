@@ -9,16 +9,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Room Booking</title>
+    <title>Hotel - Room Booking</title>
+    <link href="css/login.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/book_room.css">
+    <link rel="icon" href="images/tendura1.png" type="image/png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    
+    
 </head>
-<body>
-    <header class="header">
-        <div class="container">
-            <h1>Tendura Rooms</h1>
-            <p>Discover your perfect stay with our premium accommodations</p>
+<body class="bg-light">
+     <nav class="navbar custom navbar-light bg-light fixed-top" style="opacity: 90%;">
+        <div class="logo1">
+          <a href="Home.jsp" class="navbar-brand">
+            <span class="fw-bold text-brown fs-1 text-s5">Tendura</span>
+          </a>
         </div>
-    </header>
+        <div class="tabs">
+          <ul class="nav" style="margin: 0%;">
+            <li class="nav-item">
+              <a class="nav-link custom" href="Home.jsp">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom" href="#">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom" href="#">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom" href="#">FAQs</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <center>
+      <hr style="width: 98%; border: 2px #422100;" class="mb-5">
+    </center>
 
     <main class="container">
     <form id="bookingForm" action="bookRoom" method="GET" class="booking-form">
@@ -98,13 +124,33 @@
 						            <strong>$<%= room.getPrice() %></strong>
 						        </div>
 						
-						        <button class="book-button">Book Now</button>
+						       <form id="bookForm-<%= room.getRoomNumber() %>" action="Payment.jsp" method="GET">
+								  <input type="hidden" name="roomId" value="<%= room.getRoomId() %>">
+								  <input type="hidden" name="amount" value="<%= room.getPrice() %>">
+								  <input type="hidden" name="nights" id="nights-hidden-<%= room.getRoomNumber() %>">
+								  <button type="button" class="btn btn-dark w-100" onclick="submitBooking(<%= room.getRoomNumber() %>)">Book Now</button>
+								</form>
+
+
+
+
 						    </div>
 						</div>
 
 				
 						<%
 						        }
+						    }
+						    else{
+						    	%>
+						    	
+						    	<div class="no-rooms-available d-flex flex-column justify-content-center align-items-center" style="width:600px;display:block;">
+								  
+								  <span><i class="bi bi-exclamation-circle-fill mb-3" style="font-size: 3rem; color: #422100;"></i> No Rooms available</span>
+								</div>
+
+						  
+						  <% 	
 						    }
 						%>
 			        
@@ -115,26 +161,33 @@
 
 			    </div>
 			</main>
+			
+			<footer class="bg-light text-brown text-center py-4 mt-5">
+    <center>
+      <hr style="width: 98%; border: 2px #422100;" class="mb-5">
+    </center>
+    <div class="container">
+      <p class="mb-2">© 2025 Tendura Hotel. All rights reserved.</p>
+      <p class="mb-3">
+        <a href="#" class="text-brown text-decoration-none">Privacy Policy</a> | 
+        <a href="#" class="text-brown text-decoration-none">Terms of Service</a>
+      </p>
+      <div>
+        <a href="#" class="text-brown mx-2">
+          <i class="bi bi-facebook"></i> Facebook
+        </a>
+        <a href="#" class="text-brown mx-2">
+          <i class="bi bi-twitter"></i> Twitter
+        </a>
+        <a href="#" class="text-brown mx-2">
+          <i class="bi bi-instagram"></i> Instagram
+        </a>
+      </div>
+    </div>
+  </footer>
 
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Luxury Hotel & Resort</h3>
-                    <p>Experience the ultimate in luxury and comfort with our premium accommodations.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>123 Luxury Avenue<br>Paradise City, PC 12345</p>
-                    <p>reservations@luxuryhotel.com<br>+1 (555) 123-4567</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Luxury Hotel & Resort. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+   
 
     <script src="js/book_room.js"></script>
 </body>
