@@ -1,8 +1,6 @@
 body {
   font-family: 'Cinzel';
   margin: 0;
-  padding-top: 80px;
-  background: #f8f9fa;
 }
 
 .payment-wrapper {
@@ -63,7 +61,7 @@ select {
 
 button[type="submit"] {
   margin-top: 20px;
-  background-color: #b8772c;
+  background-color: #422100;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -133,29 +131,6 @@ button[type="submit"]:hover {
   color: #b8772c;
 }
 
- .tabs {
-    margin-right: 50px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .nav-link.custom {
-    color: #422100;
-    font-size: 22px;
-    font-weight: 400;
-    padding-left: 50px;
-  }
-  
-  .nav-link.custom:hover,
-  .nav-link.custom.active {
-    color: #d6ab5b;
-  }
 
-  .container.custom{
+  
 
-    width: 30%;
-    height: auto;
-    align-items: center;
-    text-align: center;
-   
-  }

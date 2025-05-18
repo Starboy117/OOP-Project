@@ -17,9 +17,10 @@ double total = Double.parseDouble(amount)*Integer.parseInt(nights);
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Tendura</title>
+	<title>Tendura - Payment</title>
 	
 		<link rel="icon" href="images/tendura1.png" type="image/png" />
+		<link href="css/login.css" rel="stylesheet" />
 		<link href="css/Payment.css" rel="stylesheet" />
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 		
@@ -29,35 +30,32 @@ double total = Double.parseDouble(amount)*Integer.parseInt(nights);
 
 <body class="bg-light d-flex flex-column">
 
-	<nav class="navbar custom navbar-light bg-light fixed-top" style="opacity: 90%;">
-		<div class="logo1">
-		
-			<a href="Home.jsp" class="navbar-brand"> 
-			
-			<span class="fw-bold text-brown fs-1 text-s5">Tendura</span>
-			
-			</a>
-			
-		</div>
-		
-		<div class="tabs">
-		
-			<ul class="nav" style="margin: 0%;">
-			
-				<li class="nav-item"><a class="nav-link custom" href="Home.jsp">Home</a></li>
-				<li class="nav-item"><a class="nav-link custom" href="About.jsp">About Us</a></li>
-				<li class="nav-item"><a class="nav-link custom" href="Contact.jsp">Contact Us</a></li>
-				<li class="nav-item"><a class="nav-link custom" href="FAQs.jsp">FAQs</a></li>
-			
-			</ul>
-		
-		</div>
-	
-	</nav>
-	
-	<center>
-		<hr style="width: 98%; border: 2px #422100;" class="mb-5">
-	</center>
+    <nav class="navbar custom navbar-light bg-light fixed-top" style="opacity: 90%;">
+        <div class="logo1">
+          <a href="Home.jsp" class="navbar-brand">
+            <span class="fw-bold text-brown fs-1 text-s5">Tendura</span>
+          </a>
+        </div>
+        <div class="tabs">
+          <ul class="nav" style="margin: 0%;">
+            <li class="nav-item">
+              <a class="nav-link custom" href="Home.jsp">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom" href="#">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom" href="#">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom" href="#">FAQs</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <center>
+      <hr style="width: 98%; border: 2px #422100;" class="mb-5">
+    </center>
 	
 	<div class = "payment-wrapper">
 		<h2>Complete Your Payment</h2>

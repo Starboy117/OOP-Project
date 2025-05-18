@@ -7,18 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class InsertReservationServlet
- */
 @WebServlet("/InsertReservationServlet")
 public class InsertReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		Integer roomId = (Integer) request.getAttribute("roomId");
+		Integer userId = (Integer) request.getAttribute("userId");
+		String checkinDate = (String) request.getAttribute("checkInDate");
+		String checkoutDate = (String) request.getAttribute("checkOutDate");
+		String status = "pending";
+		
+		
+		
+	
 	}
 
 }
