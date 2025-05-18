@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -47,135 +48,136 @@
         </div>
     </header>
 
-    <main class="mx-auto px-8 py-8 max-w-6xl">
-        <div class="flex items-center mb-8">
-            <a href="rooms.jsp" class="text-primary hover:text-primary/80 mr-4">
-                <div class="w-8 h-8 flex items-center justify-center">
-                    <i class="ri-arrow-left-line"></i>
-                </div>
-            </a>
-            <h1 class="text-3xl font-bold text-primary">Add New Room</h1>
-        </div>
-
-        <div class="bg-white rounded shadow-sm p-6 max-w-5xl">
-        
-        
-            <form id="addRoomForm" action="roomInsert" method="post" class="space-y-6">
-            
-            
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Room Number</label>
-                        <input type="text" name="roomNumber" required class="w-full px-3 py-2 border border-gray-300 rounded text-gray-900 placeholder-gray-500">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Room Type</label>
-                        <select name="roomType" required class="w-full px-3 py-2 border border-gray-300 rounded text-gray-900 pr-8">
-                            <option value="">Select Room Type</option>
-                            <option value="standard">Standard Room</option>
-                            <option value="deluxe">Deluxe Room</option>
-                            <option value="suite">Suite</option>
-                            <option value="executive">Executive Suite</option>
-                            <option value="family">Family Room</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Capacity</label>
-                        <input type="number" name="capacity" min="1" max="10" required class="w-full px-3 py-2 border border-gray-300 rounded text-gray-900">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Price per Night ($)</label>
-                        <input type="number" name="price" min="0" step="0.01" required class="w-full px-3 py-2 border border-gray-300 rounded text-gray-900">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Floor</label>
-                        <input type="number" name="floor" min="1" required class="w-full px-3 py-2 border border-gray-300 rounded text-gray-900">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
-                        <select name="status" required class="w-full px-3 py-2 border border-gray-300 rounded text-gray-900 pr-8">
-                            <option value="available">Available</option>
-                            <option value="maintenance">Maintenance</option>
-                            <option value="reserved">Reserved</option>
-                            <option value="occupied">Occupied</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Room Features</label>
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        <label class="flex items-center space-x-2">
-                            <input type="checkbox" name="features" value="wifi" class="text-primary">
-                            <span class="text-sm text-gray-700">Wi-Fi</span>
-                        </label>
-                        <label class="flex items-center space-x-2">
-                            <input type="checkbox" name="features" value="tv" class="text-primary">
-                            <span class="text-sm text-gray-700">Smart TV</span>
-                        </label>
-                        <label class="flex items-center space-x-2">
-                            <input type="checkbox" name="features" value="minibar" class="text-primary">
-                            <span class="text-sm text-gray-700">Mini Bar</span>
-                        </label>
-                        <label class="flex items-center space-x-2">
-                            <input type="checkbox" name="features" value="safe" class="text-primary">
-                            <span class="text-sm text-gray-700">Safe Box</span>
-                        </label>
-                        <label class="flex items-center space-x-2">
-                            <input type="checkbox" name="features" value="balcony" class="text-primary">
-                            <span class="text-sm text-gray-700">Balcony</span>
-                        </label>
-                        <label class="flex items-center space-x-2">
-                            <input type="checkbox" name="features" value="bathtub" class="text-primary">
-                            <span class="text-sm text-gray-700">Bathtub</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
-                    <textarea name="description" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded text-gray-900 placeholder-gray-500"></textarea>
-                </div>
-
-                <div class="flex justify-end space-x-4">
-                    <a href="rooms.jsp" class="px-6 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 !rounded-button whitespace-nowrap">Cancel</a>
-                    <button type="submit" class="px-6 py-2 bg-primary text-white rounded hover:bg-primary/90 !rounded-button whitespace-nowrap">Add Room</button>
-                </div>
-            </form>
-        </div>
-    </main>
-
-    <footer class="bg-primary/5 py-6 mt-auto">
-        <div class="container mx-auto px-4">
-            <div class="text-center text-sm text-gray-600">
-                &copy; 2025 Tendura Hotel. All rights reserved.
+<main class="mx-auto px-8 py-8 max-w-6xl">
+    <div class="flex items-center mb-8">
+        <a href="rooms.jsp" class="text-primary hover:text-primary/80 mr-4">
+            <div class="w-8 h-8 flex items-center justify-center">
+                <i class="ri-arrow-left-line"></i>
             </div>
-        </div>
-    </footer>
-
-    <div id="successModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white rounded-lg p-6 max-w-md w-full">
-            <div class="flex items-center justify-center mb-4 text-green-500">
-                <div class="w-12 h-12 flex items-center justify-center">
-                    <i class="ri-checkbox-circle-line text-3xl"></i>
-                </div>
-            </div>
-            <h3 class="text-lg font-medium text-center text-gray-900 mb-2">Room Added Successfully</h3>
-            <p class="text-gray-600 text-center mb-6">The new room has been added to the system.</p>
-            <div class="flex justify-center">
-                <a href="rooms.jsp" class="px-4 py-2 bg-primary text-white rounded hover:bg-primary/90 !rounded-button whitespace-nowrap">Return to Room List</a>
-            </div>
-        </div>
+        </a>
+        <h1 class="text-3xl font-bold text-primary">Add New Room</h1>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('addRoomForm');
-            const successModal = document.getElementById('successModal');
-            
-            
-        });
-    </script>
+    <div class="bg-white rounded shadow-sm p-6 max-w-5xl">
+    
+    
+        <form id="addRoomForm" action="roomInsert" method="post" class="space-y-6">
+        
+        
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Room Number</label>
+                    <input type="text" name="roomNumber" required class="w-full px-3 py-2 border border-gray-300 rounded text-gray-900 placeholder-gray-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Room Type</label>
+                    <select name="roomType" required class="w-full px-3 py-2 border border-gray-300 rounded text-gray-900 pr-8">
+                        <option value="">Select Room Type</option>
+                        <option value="standard">Standard Room</option>
+                        <option value="deluxe">Deluxe Room</option>
+                        <option value="suite">Suite</option>
+                        <option value="executive">Executive Suite</option>
+                        <option value="family">Family Room</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Capacity</label>
+                    <input type="number" name="capacity" min="1" max="10" required class="w-full px-3 py-2 border border-gray-300 rounded text-gray-900">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Price per Night ($)</label>
+                    <input type="number" name="price" min="0" step="0.01" required class="w-full px-3 py-2 border border-gray-300 rounded text-gray-900">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Floor</label>
+                    <input type="number" name="floor" min="1" required class="w-full px-3 py-2 border border-gray-300 rounded text-gray-900">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                    <select name="status" required class="w-full px-3 py-2 border border-gray-300 rounded text-gray-900 pr-8">
+                        <option value="available">Available</option>
+                        <option value="maintenance">Maintenance</option>
+                        <option value="reserved">Reserved</option>
+                        <option value="occupied">Occupied</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Room Features</label>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="features" value="wifi" class="text-primary">
+                        <span class="text-sm text-gray-700">Wi-Fi</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="features" value="tv" class="text-primary">
+                        <span class="text-sm text-gray-700">Smart TV</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="features" value="minibar" class="text-primary">
+                        <span class="text-sm text-gray-700">Mini Bar</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="features" value="safe" class="text-primary">
+                        <span class="text-sm text-gray-700">Safe Box</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="features" value="balcony" class="text-primary">
+                        <span class="text-sm text-gray-700">Balcony</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="features" value="bathtub" class="text-primary">
+                        <span class="text-sm text-gray-700">Bathtub</span>
+                    </label>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                <textarea name="description" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded text-gray-900 placeholder-gray-500"></textarea>
+            </div>
+
+            <div class="flex justify-end space-x-4">
+                <a href="rooms.jsp" class="px-6 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 !rounded-button whitespace-nowrap">Cancel</a>
+                <button type="submit" class="px-6 py-2 bg-primary text-white rounded hover:bg-primary/90 !rounded-button whitespace-nowrap">Add Room</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<footer class="bg-primary/5 py-6 mt-auto">
+    <div class="container mx-auto px-4">
+        <div class="text-center text-sm text-gray-600">
+            &copy; 2025 Tendura Hotel. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<div id="successModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-6 max-w-md w-full">
+        <div class="flex items-center justify-center mb-4 text-green-500">
+            <div class="w-12 h-12 flex items-center justify-center">
+                <i class="ri-checkbox-circle-line text-3xl"></i>
+            </div>
+        </div>
+        <h3 class="text-lg font-medium text-center text-gray-900 mb-2">Room Added Successfully</h3>
+        <p class="text-gray-600 text-center mb-6">The new room has been added to the system.</p>
+        <div class="flex justify-center">
+            <a href="rooms.jsp" class="px-4 py-2 bg-primary text-white rounded hover:bg-primary/90 !rounded-button whitespace-nowrap">Return to Room List</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('addRoomForm');
+        const successModal = document.getElementById('successModal');
+        
+        
+    });
+</script>
+
 </body>
 </html>

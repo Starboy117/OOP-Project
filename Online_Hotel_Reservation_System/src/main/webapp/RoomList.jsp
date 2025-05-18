@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -145,172 +147,44 @@ input:focus, select:focus, textarea:focus {
 						</tr>
 					</thead>
 					<tbody class="bg-white divide-y divide-gray-200">
-						<tr class="table-row-hover">
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">101</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Standard
-								Twin</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">$120</td>
-							<td class="px-6 py-4 whitespace-nowrap"><span
-								class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Available</span>
-							</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-								<div class="flex space-x-2">
-									<a href="roomAvailability.jsp?id=101"
-										class="text-primary hover:text-primary/80">
-										<div class="w-8 h-8 flex items-center justify-center">
-											<i class="ri-calendar-line"></i>
-										</div>
-									</a> <a href="editRoom.jsp?id=101"
-										class="text-primary hover:text-primary/80">
-										<div class="w-8 h-8 flex items-center justify-center">
-											<i class="ri-edit-line"></i>
-										</div>
-									</a> <a
-										href="deleteRoom.jsp?roomNumber=1024&roomType=Deluxe%20Room&floor=10&capacity=2&price=299.99">
-										<button class="text-red-600 hover:text-red-800">
-											<div class="w-8 h-8 flex items-center justify-center">
-												<i class="ri-delete-bin-line"></i>
-											</div>
-										</button>
-									</a>
-
-								</div>
-							</td>
-						</tr>
-						<tr class="table-row-hover">
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">102</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Deluxe
-								King</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">$180</td>
-							<td class="px-6 py-4 whitespace-nowrap"><span
-								class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Occupied</span>
-							</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-								<div class="flex space-x-2">
-									<a href="roomAvailability.jsp?id=102"
-										class="text-primary hover:text-primary/80">
-										<div class="w-8 h-8 flex items-center justify-center">
-											<i class="ri-calendar-line"></i>
-										</div>
-									</a> <a href="editRoom.jsp?id=102"
-										class="text-primary hover:text-primary/80">
-										<div class="w-8 h-8 flex items-center justify-center">
-											<i class="ri-edit-line"></i>
-										</div>
-									</a> <a
-										href="deleteRoom.jsp?roomNumber=1024&roomType=Deluxe%20Room&floor=10&capacity=2&price=299.99">
-										<button class="text-red-600 hover:text-red-800">
-											<div class="w-8 h-8 flex items-center justify-center">
-												<i class="ri-delete-bin-line"></i>
-											</div>
-										</button>
-									</a>
-
-								</div>
-							</td>
-						</tr>
-						<tr class="table-row-hover">
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">103</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Executive
-								Suite</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">4</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">$320</td>
-							<td class="px-6 py-4 whitespace-nowrap"><span
-								class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Reserved</span>
-							</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-								<div class="flex space-x-2">
-									<a href="roomAvailability.jsp?id=103"
-										class="text-primary hover:text-primary/80">
-										<div class="w-8 h-8 flex items-center justify-center">
-											<i class="ri-calendar-line"></i>
-										</div>
-									</a> <a href="editRoom.jsp?id=103"
-										class="text-primary hover:text-primary/80">
-										<div class="w-8 h-8 flex items-center justify-center">
-											<i class="ri-edit-line"></i>
-										</div>
-									</a> <a
-										href="deleteRoom.jsp?roomNumber=1024&roomType=Deluxe%20Room&floor=10&capacity=2&price=299.99">
-										<button class="text-red-600 hover:text-red-800">
-											<div class="w-8 h-8 flex items-center justify-center">
-												<i class="ri-delete-bin-line"></i>
-											</div>
-										</button>
-									</a>
-
-								</div>
-							</td>
-						</tr>
-						<tr class="table-row-hover">
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">104</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Standard
-								Queen</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">$140</td>
-							<td class="px-6 py-4 whitespace-nowrap"><span
-								class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Maintenance</span>
-							</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-								<div class="flex space-x-2">
-									<a href="roomAvailability.jsp?id=104"
-										class="text-primary hover:text-primary/80">
-										<div class="w-8 h-8 flex items-center justify-center">
-											<i class="ri-calendar-line"></i>
-										</div>
-									</a> <a href="editRoom.jsp?id=104"
-										class="text-primary hover:text-primary/80">
-										<div class="w-8 h-8 flex items-center justify-center">
-											<i class="ri-edit-line"></i>
-										</div>
-									</a> <a
-										href="deleteRoom.jsp?roomNumber=1024&roomType=Deluxe%20Room&floor=10&capacity=2&price=299.99">
-										<button class="text-red-600 hover:text-red-800">
-											<div class="w-8 h-8 flex items-center justify-center">
-												<i class="ri-delete-bin-line"></i>
-											</div>
-										</button>
-									</a>
-
-								</div>
-							</td>
-						</tr>
-						<tr class="table-row-hover">
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">105</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Family
-								Room</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">5</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">$250</td>
-							<td class="px-6 py-4 whitespace-nowrap"><span
-								class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Available</span>
-							</td>
-							<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-								<div class="flex space-x-2">
-									<a href="roomAvailability.jsp?id=105"
-										class="text-primary hover:text-primary/80">
-										<div class="w-8 h-8 flex items-center justify-center">
-											<i class="ri-calendar-line"></i>
-										</div>
-									</a> <a href="editRoom.jsp?id=105"
-										class="text-primary hover:text-primary/80">
-										<div class="w-8 h-8 flex items-center justify-center">
-											<i class="ri-edit-line"></i>
-										</div>
-									</a> <a
-										href="deleteRoom.jsp?roomNumber=1024&roomType=Deluxe%20Room&floor=10&capacity=2&price=299.99">
-										<button class="text-red-600 hover:text-red-800">
-											<div class="w-8 h-8 flex items-center justify-center">
-												<i class="ri-delete-bin-line"></i>
-											</div>
-										</button>
-									</a>
-
-								</div>
-							</td>
-						</tr>
-					</tbody>
+  <c:forEach var="room" items="${roomList}">
+    <tr class="table-row-hover">
+      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${room.roomNumber}</td>
+      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${room.roomType}</td>
+      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${room.capacity}</td>
+      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">$${room.price}</td>
+      <td class="px-6 py-4 whitespace-nowrap">
+        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full
+          ${room.status == 'Available' ? 'bg-green-100 text-green-800' : 
+            (room.status == 'Occupied' ? 'bg-red-100 text-red-800' :
+              (room.status == 'Reserved' ? 'bg-yellow-100 text-yellow-800' : 'bg-gray-100 text-gray-800'))}">
+          ${room.status}
+        </span>
+      </td>
+      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+        <div class="flex space-x-2">
+          <a href="roomAvailability.jsp?id=${room.roomNumber}" class="text-primary hover:text-primary/80">
+            <div class="w-8 h-8 flex items-center justify-center">
+              <i class="ri-calendar-line"></i>
+            </div>
+          </a>
+          <a href="editRoom.jsp?id=${room.roomNumber}" class="text-primary hover:text-primary/80">
+            <div class="w-8 h-8 flex items-center justify-center">
+              <i class="ri-edit-line"></i>
+            </div>
+          </a>
+          <a href="deleteRoom.jsp?roomNumber=${room.roomNumber}">
+            <button class="text-red-600 hover:text-red-800">
+              <div class="w-8 h-8 flex items-center justify-center">
+                <i class="ri-delete-bin-line"></i>
+              </div>
+            </button>
+          </a>
+        </div>
+      </td>
+    </tr>
+  </c:forEach>
+</tbody>
 				</table>
 			</div>
 

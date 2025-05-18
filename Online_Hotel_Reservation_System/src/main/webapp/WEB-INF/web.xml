@@ -1,228 +1,255 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>Online_Hotel_Reservation_System</display-name>
-  
-  <servlet>
-  	<servlet-name>Login</servlet-name>
-  	<servlet-class>com.user.LoginServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>Login</servlet-name>
-  	<url-pattern>/log</url-pattern>
-  </servlet-mapping>
-  
-  
-  
-  <servlet>
-  	<servlet-name>userInsert</servlet-name>
-  	<servlet-class>com.user.userInsertServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>userInsert</servlet-name>
-  	<url-pattern>/insert</url-pattern>
-  </servlet-mapping>
-  
-  
-  
-<servlet>
-  <servlet-name>userLogout</servlet-name>
-  <servlet-class>com.user.LogoutServlet</servlet-class>
-</servlet>
-
-<servlet-mapping>
-  <servlet-name>userLogout</servlet-name>
-  <url-pattern>/logout</url-pattern>
-</servlet-mapping>
-
-
-
-<servlet>
-	<servlet-name>userUpdate</servlet-name>
-	<servlet-class>com.user.UpdateUserServlet</servlet-class>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>userUpdate</servlet-name>
-	<url-pattern>/updateUser</url-pattern>
-</servlet-mapping>
-
-
-
-
-<servlet>
-	<servlet-name>changePassword</servlet-name>
-	<servlet-class>com.user.changePasswordServlet</servlet-class>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>changePassword</servlet-name>
-	<url-pattern>/passwordChange</url-pattern>
-</servlet-mapping>
-
-
-
-
-<servlet>
-	<servlet-name>manageUsers</servlet-name>
-	<servlet-class>com.staff.userManageServlet</servlet-class>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>manageUsers</servlet-name>
-	<url-pattern>/getUsers</url-pattern>
-</servlet-mapping>
-
-
-
-
-<servlet>
-	<servlet-name>adminDash</servlet-name>
-	<servlet-class>com.staff.adminDashboardServlet</servlet-class>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>adminDash</servlet-name>
-	<url-pattern>/adminDashboard</url-pattern>
-</servlet-mapping>
-
-
-
-
-<servlet>
-	<servlet-name>manageStaff</servlet-name>
-	<servlet-class>com.staff.staffManageServlet</servlet-class>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>manageStaff</servlet-name>
-	<url-pattern>/getStaff</url-pattern>
-</servlet-mapping>
-
-
-
-<servlet>
-	<servlet-name>getSingleUser</servlet-name>
-	<servlet-class>com.staff.getSingleUserServlet</servlet-class>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>getSingleUser</servlet-name>
-	<url-pattern>/singleUser</url-pattern>
-</servlet-mapping>
-
-
-
-<servlet>
-	<servlet-name>editUser</servlet-name>
-	<servlet-class>com.staff.editUserServlet</servlet-class>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>editUser</servlet-name>
-	<url-pattern>/userEdit</url-pattern>
-</servlet-mapping>
-
-
-
-
-<servlet>
-	<servlet-name>userDelete</servlet-name>
-	<servlet-class>com.staff.deleteUserServlet</servlet-class>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>userDelete</servlet-name>
-	<url-pattern>/deleteUser</url-pattern>
-</servlet-mapping>
-
-
-
-
-<servlet>
-	<servlet-name>staffDelete</servlet-name>
-	<servlet-class>com.staff.deleteStaffServlet</servlet-class>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>staffDelete</servlet-name>
-	<url-pattern>/deleteStaff</url-pattern>
-</servlet-mapping>
-
-
-
-<servlet>
-	<servlet-name>getSingleStaff</servlet-name>
-	<servlet-class>com.staff.getSingleStaffServlet</servlet-class>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>getSingleStaff</servlet-name>
-	<url-pattern>/singleStaff</url-pattern>
-</servlet-mapping>
-
-
-
-<servlet>
-	<servlet-name>editStaff</servlet-name>
-	<servlet-class>com.staff.editStaffServlet</servlet-class>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>editStaff</servlet-name>
-	<url-pattern>/staffEdit</url-pattern>
-</servlet-mapping>
-
-
-<servlet>
-	<servlet-name>addStaff</servlet-name>
-	<servlet-class>com.staff.addStaffServlet</servlet-class>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>addStaff</servlet-name>
-	<url-pattern>/staffAdd</url-pattern>
-</servlet-mapping>
-
-
-<servlet>
-	<servlet-name>roomBook</servlet-name>
-	<servlet-class>com.Room.BookRoomServlet</servlet-class>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>roomBook</servlet-name>
-	<url-pattern>/bookRoom</url-pattern>
-</servlet-mapping>
-
-  
-  
-  
-  
-
-  
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>Online_Hotel_Reservation_System</display-name>
 
 	<servlet>
-        <servlet-name>insertRoom</servlet-name>
-        <servlet-class>com.Room.roominsertServlet</servlet-class>
-    </servlet>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>com.user.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/log</url-pattern>
+	</servlet-mapping>
 
-    <servlet-mapping>
-        <servlet-name>insertRoom</servlet-name>
-        <url-pattern>/roomInsert</url-pattern>
-    </servlet-mapping>
-    
-    
-    
-    
+
+
 	<servlet>
-        <servlet-name>payment</servlet-name>
-        <servlet-class>com.payment.PaymentServlet</servlet-class>
-    </servlet>
+		<servlet-name>userInsert</servlet-name>
+		<servlet-class>com.user.userInsertServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>userInsert</servlet-name>
+		<url-pattern>/insert</url-pattern>
+	</servlet-mapping>
 
-    <servlet-mapping>
-        <servlet-name>payment</servlet-name>
-        <url-pattern>/pay</url-pattern>
-    </servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>userLogout</servlet-name>
+		<servlet-class>com.user.LogoutServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>userLogout</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+
+
+
+	<servlet>
+		<servlet-name>userUpdate</servlet-name>
+		<servlet-class>com.user.UpdateUserServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>userUpdate</servlet-name>
+		<url-pattern>/updateUser</url-pattern>
+	</servlet-mapping>
+
+
+
+
+	<servlet>
+		<servlet-name>changePassword</servlet-name>
+		<servlet-class>com.user.changePasswordServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>changePassword</servlet-name>
+		<url-pattern>/passwordChange</url-pattern>
+	</servlet-mapping>
+
+
+
+
+	<servlet>
+		<servlet-name>manageUsers</servlet-name>
+		<servlet-class>com.staff.userManageServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>manageUsers</servlet-name>
+		<url-pattern>/getUsers</url-pattern>
+	</servlet-mapping>
+
+
+
+
+	<servlet>
+		<servlet-name>adminDash</servlet-name>
+		<servlet-class>com.staff.adminDashboardServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>adminDash</servlet-name>
+		<url-pattern>/adminDashboard</url-pattern>
+	</servlet-mapping>
+
+
+
+
+	<servlet>
+		<servlet-name>manageStaff</servlet-name>
+		<servlet-class>com.staff.staffManageServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>manageStaff</servlet-name>
+		<url-pattern>/getStaff</url-pattern>
+	</servlet-mapping>
+
+
+
+	<servlet>
+		<servlet-name>getSingleUser</servlet-name>
+		<servlet-class>com.staff.getSingleUserServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>getSingleUser</servlet-name>
+		<url-pattern>/singleUser</url-pattern>
+	</servlet-mapping>
+
+
+
+	<servlet>
+		<servlet-name>editUser</servlet-name>
+		<servlet-class>com.staff.editUserServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>editUser</servlet-name>
+		<url-pattern>/userEdit</url-pattern>
+	</servlet-mapping>
+
+
+
+
+	<servlet>
+		<servlet-name>userDelete</servlet-name>
+		<servlet-class>com.staff.deleteUserServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>userDelete</servlet-name>
+		<url-pattern>/deleteUser</url-pattern>
+	</servlet-mapping>
+
+
+
+
+	<servlet>
+		<servlet-name>staffDelete</servlet-name>
+		<servlet-class>com.staff.deleteStaffServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>staffDelete</servlet-name>
+		<url-pattern>/deleteStaff</url-pattern>
+	</servlet-mapping>
+
+
+
+	<servlet>
+		<servlet-name>getSingleStaff</servlet-name>
+		<servlet-class>com.staff.getSingleStaffServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>getSingleStaff</servlet-name>
+		<url-pattern>/singleStaff</url-pattern>
+	</servlet-mapping>
+
+
+
+	<servlet>
+		<servlet-name>editStaff</servlet-name>
+		<servlet-class>com.staff.editStaffServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>editStaff</servlet-name>
+		<url-pattern>/staffEdit</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>addStaff</servlet-name>
+		<servlet-class>com.staff.addStaffServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>addStaff</servlet-name>
+		<url-pattern>/staffAdd</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>roomBook</servlet-name>
+		<servlet-class>com.Room.BookRoomServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>roomBook</servlet-name>
+		<url-pattern>/bookRoom</url-pattern>
+	</servlet-mapping>
+
+
+
+
+
+
+
+
+	<servlet>
+		<servlet-name>insertRoom</servlet-name>
+		<servlet-class>com.Room.roominsertServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>insertRoom</servlet-name>
+		<url-pattern>/roomInsert</url-pattern>
+	</servlet-mapping>
+
+	<!-- Get All Rooms Servlet -->
+	<servlet>
+		<servlet-name>getAllRooms</servlet-name>
+		<servlet-class>com.Room.GetAllRoomServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>getAllRooms</servlet-name>
+		<url-pattern>/getAllRooms</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>updateRoomServlet</servlet-name>
+		<servlet-class>com.Room.updateRoomServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>updateRoomServlet</servlet-name>
+		<url-pattern>/updateRoom</url-pattern>
+	</servlet-mapping>
+
+
+
+
+
+
+	<servlet>
+		<servlet-name>payment</servlet-name>
+		<servlet-class>com.payment.PaymentServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>payment</servlet-name>
+		<url-pattern>/pay</url-pattern>
+	</servlet-mapping>
 
 
 </web-app>
