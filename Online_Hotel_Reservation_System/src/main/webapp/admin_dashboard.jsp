@@ -62,7 +62,7 @@
                 <li class="active"><a href="adminDashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="getUsers"><i class="fas fa-user-alt"></i> Users</a></li>
                 <li><a href="getStaff"><i class="fas fa-user-tie"></i> Staff</a></li>
-                <li><a href="#"><i class="fas fa-house-user"></i> Rooms</a></li>
+                <li><a href="getAllRooms"><i class="fas fa-house-user"></i> Rooms</a></li>
                 <li><a href="#"><i class="fas fa-chart-bar"></i> Reports & Logs</a></li>
                 
             </ul>
