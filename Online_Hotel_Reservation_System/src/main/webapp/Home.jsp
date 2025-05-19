@@ -31,7 +31,7 @@
           <a class="nav-link active custom" href="Home.jsp">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link custom" href="#">About Us</a>
+          <a class="nav-link custom" href="AboutUs.jsp">About Us</a>
         </li>
         <li class="nav-item">
           <a class="nav-link custom" href="ContactUs.jsp">Contact Us</a>
@@ -128,8 +128,8 @@
     <div class="container">
       <p class="mb-2">© 2025 Tendura Hotel. All rights reserved.</p>
       <p class="mb-3">
-        <a href="#" class="text-brown text-decoration-none">Privacy Policy</a> | 
-        <a href="#" class="text-brown text-decoration-none">Terms of Service</a>
+        <a href="PrivacyPolicy.jsp" class="text-brown text-decoration-none">Privacy Policy</a> | 
+        <a href="TermsofService.jsp" class="text-brown text-decoration-none">Terms of Service</a>
       </p>
       <div>
         <a href="#" class="text-brown mx-2">
@@ -143,6 +143,9 @@
         </a>
       </div>
     </div>
+    
+    
+    
   </footer>
 	
 	<script>
