@@ -2,6 +2,19 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
+<%
+
+Integer userId = (Integer) session.getAttribute("userId");
+
+
+if(userId == null){
+	
+	response.sendRedirect("Login.jsp");
+	return;
+}
+
+%>
+
 <%@ page import="java.util.List" %>
 <%@ page import="com.Room.Room" %>
 
@@ -124,12 +137,17 @@
 						            <strong>$<%= room.getPrice() %></strong>
 						        </div>
 						
-						       <form id="bookForm-<%= room.getRoomNumber() %>" action="Payment.jsp" method="GET">
-								  <input type="hidden" name="roomId" value="<%= room.getRoomId() %>">
-								  <input type="hidden" name="amount" value="<%= room.getPrice() %>">
-								  <input type="hidden" name="nights" id="nights-hidden-<%= room.getRoomNumber() %>">
-								  <button type="button" class="btn btn-dark w-100" onclick="submitBooking(<%= room.getRoomNumber() %>)">Book Now</button>
-								</form>
+						      <form id="bookForm-<%= room.getRoomNumber() %>" action="Payment.jsp" method="GET">
+							    <input type="hidden" name="roomId" value="<%= room.getRoomId() %>">
+							    <input type="hidden" name="amount" value="<%= room.getPrice() %>">
+							    <input type="hidden" name="nights" id="nights-hidden-<%= room.getRoomNumber() %>">
+							
+							    
+							    <input type="hidden" name="checkIn" value="<%= request.getParameter("checkIn") != null ? request.getParameter("checkIn") : "" %>">
+							    <input type="hidden" name="checkOut" value="<%= request.getParameter("checkOut") != null ? request.getParameter("checkOut") : "" %>">
+							
+							    <button type="button" class="btn btn-dark w-100" onclick="submitBooking(<%= room.getRoomNumber() %>)">Book Now</button>
+							</form>
 
 
 

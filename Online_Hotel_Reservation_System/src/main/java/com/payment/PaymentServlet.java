@@ -27,6 +27,14 @@ public class PaymentServlet extends HttpServlet {
     
         double amount = Double.parseDouble(request.getParameter("amount"));
         String method = request.getParameter("payment_method");
+        String roomId = request.getParameter("roomId");
+        String userId = request.getParameter("userId");
+        String checkInDate = request.getParameter("checkInDate");
+        String checkOutDate = request.getParameter("checkOutDate");
+        
+        
+        int room_id=Integer.parseInt(roomId);
+        int user_id=Integer.parseInt(userId);
 
         Payment payment = new Payment();
         
@@ -51,11 +59,16 @@ public class PaymentServlet extends HttpServlet {
         	System.out.println("Amount: " + amount);
         	System.out.println("Method: " + method);
 
-            paymentDAO.insertPayment(payment);
-            response.sendRedirect("Home.jsp");
+            int payId = paymentDAO.insertPayment(payment);
+            request.setAttribute("payId", payId);
+            request.setAttribute("roomId", room_id);
+            request.setAttribute("userId",user_id);
+            request.setAttribute("checkIn",checkInDate);
+            request.setAttribute("checkOut", checkOutDate);
+            request.getRequestDispatcher("makeReservation").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("Payment.jsp");
+            response.sendRedirect("PaymentStatus.jsp?status=failure");
         }
     }
 }

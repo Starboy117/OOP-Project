@@ -194,6 +194,45 @@
 	<url-pattern>/bookRoom</url-pattern>
 </servlet-mapping>
 
+
+
+<servlet>
+	<servlet-name>reservation</servlet-name>
+	<servlet-class>com.reservation.InsertReservationServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>reservation</servlet-name>
+	<url-pattern>/makeReservation</url-pattern>
+</servlet-mapping>
+
+
+
+
+
+<servlet>
+	<servlet-name>viewReservation</servlet-name>
+	<servlet-class>com.reservation.getReservationServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>viewReservation</servlet-name>
+	<url-pattern>/getUserReservation</url-pattern>
+</servlet-mapping>
+
+
+
+<servlet>
+	<servlet-name>userCancelReservation</servlet-name>
+	<servlet-class>com.reservation.CancelReservationServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>userCancelReservation</servlet-name>
+	<url-pattern>/cancelReservation</url-pattern>
+</servlet-mapping>
+
+
   
   
   

@@ -4,6 +4,7 @@
 <%
     Integer userId = (Integer) session.getAttribute("userId");
 	String name = (String) session.getAttribute("name");
+	
 %>
 
 <html>
@@ -15,6 +16,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="css/home.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  
 
 </head>
 
@@ -72,9 +75,23 @@
       <video src="videos/video1.mp4" autoplay loop muted playsinline class="full-video"></video>
       <div class="video-text">
         "Welcome to Tendura : Experience Comfort, Luxury, and Unforgettable Moments."
-        <button class="btn btn-outline-light btn-xl" style="margin-left: 70px;">Book Now</button>
+        <a href="bookRoom"><button class="btn btn-outline-light btn-xl" style="margin-left: 70px;">Book Now</button></a>
       </div>
     </div>
+    
+    <div class="container text-center my-5">
+  <div class="d-flex justify-content-center flex-wrap gap-4">
+    <a href="bookRoom" class="btn book-btn px-5 py-3">
+      <i class="bi bi-calendar2-check-fill me-2"></i> Book Now
+	    </a>
+	    <a href="getUserReservation" class="btn view-btn px-5 py-3" id="viewReservation" style="display:none;'">
+	      <i class="bi bi-eye-fill me-2"></i> View Reservation
+	    </a>
+	  </div>
+	</div>
+
+
+    
 
     <div class="content-container bg-light d-block" >
 
@@ -147,16 +164,22 @@
 	
 	<script>
   		var checkId = 0;
+  		var checkReservation=0;
 
   		<% if (userId != null && userId != 0) { %>
    		 checkId = 1;
   		<% } %>
+  		
+ 
 
   		if (checkId === 1) {
     		document.getElementById("profile").style.display = "block"; 
     		document.getElementById("login").style.display = "none";
    		 	document.getElementById("register").style.display = "none";
+   			 document.getElementById("viewReservation").style.display = "block";
   		}
+  		
+  		
 	</script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

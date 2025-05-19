@@ -4,10 +4,22 @@
 
 <%
 
+Integer userId = (Integer) session.getAttribute("userId");
+
+
+if(userId == null){
+	
+	response.sendRedirect("Login.jsp");
+	return;
+}
 
 String roomId = request.getParameter("roomId");
 String amount = request.getParameter("amount");
 String nights = request.getParameter("nights");
+
+String checkin = request.getParameter("checkIn") ;
+String checkout = request.getParameter("checkOut") ;
+
 
 double total = Double.parseDouble(amount)*Integer.parseInt(nights);
 
@@ -23,8 +35,10 @@ double total = Double.parseDouble(amount)*Integer.parseInt(nights);
 		<link href="css/login.css" rel="stylesheet" />
 		<link href="css/Payment.css" rel="stylesheet" />
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+		<script src="js/Payment.js" defer></script>
 		
-		<script  src="js/Payment.js" defer></script>
+		
+		
 
 </head>
 
@@ -62,7 +76,10 @@ double total = Double.parseDouble(amount)*Integer.parseInt(nights);
 		
 		<form id = "paymentForm" action = "pay" method = "post">
 		
-			
+			<input type="hidden" name="roomId" value=<%=roomId %>>
+			<input type="hidden" name="userId" value=<%=userId %>>
+			<input type="hidden" name="checkInDate" value=<%=checkin %>>
+			<input type="hidden" name="checkOutDate" value=<%=checkout %>>
 			
 			<div class = "input-details">
 			
@@ -96,7 +113,7 @@ double total = Double.parseDouble(amount)*Integer.parseInt(nights);
 				<div class = "input-details">
 			
 					<label for = "card_number">Card Number</label>
-					<input type = "text" id = "card_number" name = "card_number">
+					<input type = "text" id = "card_number" name = "card_number" maxlength="16">
 			
 				</div>
 			
@@ -112,7 +129,7 @@ double total = Double.parseDouble(amount)*Integer.parseInt(nights);
 				  <div class = "input-details">
 				
 					<label for = "cvv">CVV</label>
-					<input type = "password" id = "cvv" name = "cvv">
+					<input type = "password" id = "cvv" name = "cvv" maxlength="3">
 				
 				  </div>
 			
@@ -137,6 +154,10 @@ double total = Double.parseDouble(amount)*Integer.parseInt(nights);
 		</form>
 		
 	</div>
+	
+	
+	
+
 	
 </body>
 

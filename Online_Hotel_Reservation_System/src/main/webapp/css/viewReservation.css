@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'Cinzel';
+  src: url('Fonts/Cinzel-VariableFont_wght.ttf') format('truetype');
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.bg-brown {
+  background-color: #422100 !important;
+}
+
+.text-brown {
+  color: #422100;
+}
+
+.btn-brown {
+  background-color: #422100;
+  color: white;
+  border-radius: 10px;
+}
+
+.btn-brown:hover {
+  background-color: #5b3200;
+  color: white;
+}
+
+.reservation-card {
+  max-width: 700px;
+  margin: auto;
+  margin-top:50px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+
+.reservation-card p {
+  font-weight: normal; /* reset any inherited boldness */
+  margin-bottom: 0.5rem;
+}
+
+.reservation-card p strong {
+  font-weight: 600; /* or 700 if you want it bold but consistent */
+}

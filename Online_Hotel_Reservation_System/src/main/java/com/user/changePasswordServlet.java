@@ -50,7 +50,9 @@ public class changePasswordServlet extends HttpServlet {
         
         
         try {
-        	boolean isTrue = UserDBUtil.changedPasswordUpdate(id, pass);
+        	
+        	IUserDBUtil iuserDBUtill = new UserDBUtil(); 
+        	boolean isTrue = iuserDBUtill.changedPasswordUpdate(id, pass);
         	
         	if(isTrue==true) {
         		

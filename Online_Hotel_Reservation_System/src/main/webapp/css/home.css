@@ -159,13 +159,35 @@
 	display:none;
 }
 
-.cutomizing{
 	
 	
-}
+
 .fw-6{
 	font-weight:500;
 }
   
+.book-btn {
+  background-color: #422100;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 500;
+  border: 2px solid #422100;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+
+
+.view-btn {
+  background-color: transparent;
+  color: #422100;
+  font-size: 1.25rem;
+  font-weight: 500;
+  border: 2px solid #422100;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+
 
 

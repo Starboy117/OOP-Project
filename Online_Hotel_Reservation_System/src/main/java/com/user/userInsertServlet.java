@@ -9,16 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class userInsertServlet
- */
+
 //@WebServlet("/userInsertServlet")
 public class userInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String name =request.getParameter("name");
@@ -47,15 +43,24 @@ public class userInsertServlet extends HttpServlet {
             return;
 		}
 		
+		if(userName.endsWith("@tendura_staff")) {
+			
+			request.setAttribute("error", "Username cannot end with '@tendura_staff'.");
+            RequestDispatcher dis = request.getRequestDispatcher("Register.jsp");
+            dis.forward(request, response);
+            return;
+		}
+		
 		
 		try {
 			
-			boolean check = UserDBUtil.checkUsername(userName);
+			IUserDBUtil iuserDBUtill = new UserDBUtil();
+			boolean check = iuserDBUtill.checkUsername(userName);
 		
 			
 		if(check==true) {
 			
-			boolean msg = UserDBUtil.insertUserDetails(name, userName, email, password);
+			boolean msg = iuserDBUtill.insertUserDetails(name, userName, email, password);
 			
 			if(msg==true) {
 				

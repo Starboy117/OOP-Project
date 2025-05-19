@@ -48,14 +48,22 @@ public class UpdateUserServlet extends HttpServlet {
 			
 		}
 		
+		if(username.endsWith("@tendura_staff")) {
+			
+			request.setAttribute("error", "Username cannot end with '@tendura_staff'.");
+            RequestDispatcher dis = request.getRequestDispatcher("userProfile.jsp");
+            dis.forward(request, response);
+            return;
+		}
+		
 		
 		
 
 		
 		
-		
+		IUserDBUtil iuserDBUtill = new UserDBUtil(); 
 		boolean isTrue;
-		boolean check = UserDBUtil.checkUsername(username);
+		boolean check = iuserDBUtill.checkUsername(username);
 		
 		if(sUserName.equals(username)) {
 			
@@ -66,7 +74,7 @@ public class UpdateUserServlet extends HttpServlet {
 			
 			if(check == true) {
 			
-				isTrue=UserDBUtil.updateUserDetails(id, name, username, email);
+				isTrue=iuserDBUtill.updateUserDetails(id, name, username, email);
 			
 				if(isTrue == true) {
 				

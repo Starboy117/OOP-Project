@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.user.IUserDBUtil;
 import com.user.UserDBUtil;
 
 @WebServlet("/editUserServlet")
@@ -81,7 +82,9 @@ public class editUserServlet extends HttpServlet {
 		
 		
 		boolean isTrue;
-		boolean check = UserDBUtil.checkUsername(username);
+		
+		IUserDBUtil iuserDBUtill = new UserDBUtil(); 
+		boolean check = iuserDBUtill.checkUsername(username);
 		
 		if(sUserName.equals(username)) {
 			

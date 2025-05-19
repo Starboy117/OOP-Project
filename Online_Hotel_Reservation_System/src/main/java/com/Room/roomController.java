@@ -54,19 +54,28 @@ public class roomController {
     		
     		String sql=null;
     		
-    		if(roomType.equals("all")) {
-    		
-    		sql="SELECT * FROM rooms r WHERE r.room_id NOT IN (SELECT b.room_id FROM reservation b WHERE b.check_in_date < '"+checkIn+"' AND b.check_out_date > '"+checkOut+"')";
-    		
+    		if (roomType.equals("all")) {
+    		    sql = "SELECT * FROM rooms r " +
+    		          "WHERE r.room_id NOT IN (" +
+    		          "SELECT b.room_id FROM reservation b " +
+    		          "WHERE b.check_in_date < '" + checkOut + "' " +
+    		          "AND b.check_out_date > '" + checkIn + "')";
+    		} else if (roomType.equals("standard")) {
+    		    sql = "SELECT * FROM rooms r " +
+    		          "WHERE r.room_type = 'standard' " +
+    		          "AND r.room_id NOT IN (" +
+    		          "SELECT b.room_id FROM reservation b " +
+    		          "WHERE b.check_in_date < '" + checkOut + "' " +
+    		          "AND b.check_out_date > '" + checkIn + "')";
+    		} else if (roomType.equals("suite")) {
+    		    sql = "SELECT * FROM rooms r " +
+    		          "WHERE r.room_type = 'suite' " +
+    		          "AND r.room_id NOT IN (" +
+    		          "SELECT b.room_id FROM reservation b " +
+    		          "WHERE b.check_in_date < '" + checkOut + "' " +
+    		          "AND b.check_out_date > '" + checkIn + "')";
     		}
-    		else if(roomType.equals("standard")) {
-    			
-    			sql="SELECT * FROM rooms r WHERE r.room_type='standard' AND r.room_id NOT IN (SELECT b.room_id FROM reservation b WHERE b.check_in_date < '"+checkIn+"' AND b.check_out_date > '"+checkOut+"')";
-    		}
-    		else if(roomType.equals("suite")) {
-    			
-    			sql="SELECT * FROM rooms r WHERE r.room_type='suite' AND r.room_id NOT IN (SELECT b.room_id FROM reservation b WHERE b.check_in_date < '"+checkIn+"' AND b.check_out_date > '"+checkOut+"')";
-    		}
+
     				
     		rs = stmt.executeQuery(sql);
     		
