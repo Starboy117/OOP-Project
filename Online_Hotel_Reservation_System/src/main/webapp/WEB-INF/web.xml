@@ -223,6 +223,50 @@
         <servlet-name>payment</servlet-name>
         <url-pattern>/pay</url-pattern>
     </servlet-mapping>
+    
+    
+    
+    <servlet>
+        <servlet-name>ContactServlet</servlet-name>
+        <servlet-class>com.contact.ContactServlet</servlet-class>
+    </servlet>
 
+	<servlet-mapping>
+        <servlet-name>ContactServlet</servlet-name>
+        <url-pattern>/contact</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>GetMessagesServlet</servlet-name>
+        <servlet-class>com.contact.GetMessagesServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>GetMessagesServlet</servlet-name>
+        <url-pattern>/getMessages</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>UpdateMessageServlet</servlet-name>
+        <servlet-class>com.contact.UpdateMessageServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>UpdateMessageServlet</servlet-name>
+        <url-pattern>/updateMessage</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>DeleteMessageServlet</servlet-name>
+        <servlet-class>com.contact.DeleteMessageServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>DeleteMessageServlet</servlet-name>
+        <url-pattern>/deleteMessage</url-pattern>
+    </servlet-mapping>
 
 </web-app>
