@@ -1,5 +1,3 @@
 INDEX VERSION 1.134
-C:\Users\Ammar\Desktop\Project\OOP-Project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1427331350.index
-\Online_Hotel_Reservation_System\src\main\java
-C:\Users\Ammar\Desktop\Project\OOP-Project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3017189448.index
+C:\Users\user\Desktop\Project\OOP-Project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1427331350.index
 \Online_Hotel_Reservation_System\src\main\java

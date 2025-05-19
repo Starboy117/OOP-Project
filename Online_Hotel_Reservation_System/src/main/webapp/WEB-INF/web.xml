@@ -224,5 +224,35 @@
         <url-pattern>/pay</url-pattern>
     </servlet-mapping>
 
-
+ 
+ 
+     <servlet>
+        <servlet-name>InsertGuest</servlet-name>
+        <servlet-class>com.reservation.guestCheckingServlet</servlet-class>
+     </servlet>
+      <servlet-mapping>
+        <servlet-name>InsertGuest</servlet-name>
+        <url-pattern>/guestDetails</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+    <servlet-name>UpdateGuest</servlet-name>
+    <servlet-class>com.reservation.UpdateGuestServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+    <servlet-name>UpdateGuest</servlet-name>
+    <url-pattern>/Update</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+    <servlet-name>DeleteGuest</servlet-name>
+    <servlet-class>com.reservation.DeleteGuestServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+    <servlet-name>DeleteGuest</servlet-name>
+    <url-pattern>/Delete</url-pattern>
+    </servlet-mapping>
 </web-app>
