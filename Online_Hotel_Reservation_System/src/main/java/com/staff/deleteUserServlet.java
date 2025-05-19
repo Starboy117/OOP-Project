@@ -23,8 +23,8 @@ public class deleteUserServlet extends HttpServlet {
 		
 		
 		try {
-			
-			boolean isSuccess = staffDBUtill.deleteUser(id); 
+			iStaffUtil istaffDButil = new staffDBUtill();
+			boolean isSuccess = istaffDButil.deleteUser(id); 
 			
 			if(isSuccess == true) {
 				

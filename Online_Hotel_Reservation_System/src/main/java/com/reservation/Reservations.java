@@ -3,6 +3,8 @@ package com.reservation;
 public class Reservations {
 	
 	private int id;
+	private int userId;
+	private int roomId;
 	private String checkInDate;
 	private String checkOutDate;
 	private String reservationDate;
@@ -17,7 +19,27 @@ public class Reservations {
 		this.reservationDate = reservationDate;
 		this.status = status;
 	}
+	
+	public Reservations(int id, int userId, int roomId, String checkInDate) {
 
+		this.id = id;
+		this.userId = userId;
+		this.roomId = roomId;
+		this.checkInDate = checkInDate;
+	}
+
+
+	
+	
+
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public int getRoomId() {
+		return roomId;
+	}
 
 	public int getId() {
 		return id;

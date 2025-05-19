@@ -77,12 +77,14 @@ public class addStaffServlet extends HttpServlet {
 		
 		try {
 			
-			boolean check = staffDBUtill.checkUsername(userName);
+			iStaffUtil istaffDButil = new staffDBUtill();
+			
+			boolean check = istaffDButil.checkUsername(userName);
 		
 			
 		if(check==true) {
 			
-			boolean msg = staffDBUtill.insertStaffDetails(name, userName, email, password, role);
+			boolean msg = istaffDButil.insertStaffDetails(name, userName, email, password, role);
 			
 			if(msg==true) {
 				

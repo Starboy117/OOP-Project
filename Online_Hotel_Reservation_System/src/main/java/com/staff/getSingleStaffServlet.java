@@ -25,7 +25,8 @@ public class getSingleStaffServlet extends HttpServlet {
 		
 		int id = Integer.parseInt(userId);
 		
-		List<Staff> user = staffDBUtill.getSingleStaff(id);
+		iStaffUtil istaffDButil = new staffDBUtill();
+		List<Staff> user = istaffDButil.getSingleStaff(id);
 		
 		System.out.println("Staff : " + user);
 		

@@ -6,12 +6,15 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+//User pages control class
 public class UserDBUtil implements IUserDBUtil {
 
     private static Connection con = null;
     private static PreparedStatement ps = null;
     private static ResultSet rs = null;
 
+    
+    //Login function
     @Override
     public List<User> validateUser(String userName, String password) {
         List<User> userList = new ArrayList<>();
@@ -40,7 +43,11 @@ public class UserDBUtil implements IUserDBUtil {
 
         return userList;
     }
-
+    
+    
+    
+    
+    //checking for duplicate username
     @Override
     public boolean checkUsername(String username) {
         boolean isAvailable = false;
@@ -61,7 +68,11 @@ public class UserDBUtil implements IUserDBUtil {
 
         return isAvailable;
     }
-
+    
+    
+    
+    
+    //Register function
     @Override
     public boolean insertUserDetails(String name, String userName, String email, String password) {
         boolean success = false;
@@ -85,6 +96,8 @@ public class UserDBUtil implements IUserDBUtil {
         return success;
     }
 
+    
+    //user profile changing user details function
     @Override
     public boolean updateUserDetails(int id, String name, String username, String email) {
         boolean success = false;
@@ -108,6 +121,8 @@ public class UserDBUtil implements IUserDBUtil {
         return success;
     }
 
+    
+    //user profile changing password function
     @Override
     public boolean changedPasswordUpdate(int id, String password) {
         boolean success = false;

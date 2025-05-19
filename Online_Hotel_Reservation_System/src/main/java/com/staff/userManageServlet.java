@@ -19,7 +19,8 @@ public class userManageServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<User> userList = staffDBUtill.getAllUsers();
+    	iStaffUtil istaffDButil = new staffDBUtill();
+        List<User> userList = istaffDButil.getAllUsers();
         
        // System.out.println("Users fetched: " + userList);
 

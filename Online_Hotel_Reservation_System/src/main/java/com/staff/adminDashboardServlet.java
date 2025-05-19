@@ -20,12 +20,14 @@ public class adminDashboardServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	
+    	iStaffUtil istaffDButil = new staffDBUtill();
 
-        List<Integer> stats = staffDBUtill.getNumberofObjectsAdmin();
+        List<Integer> stats = istaffDButil.getNumberofObjectsAdmin();
 
-        List<User> userList = staffDBUtill.getUserOverview();
-        List<Staff> staffList = staffDBUtill.getStaffOverview();
-        List<Room> roomList = staffDBUtill.getRoomOverview();
+        List<User> userList = istaffDButil.getUserOverview();
+        List<Staff> staffList = istaffDButil.getStaffOverview();
+        List<Room> roomList = istaffDButil.getRoomOverview();
 
         request.setAttribute("totalUsers", stats.get(0));
         request.setAttribute("totalStaff", stats.get(1));

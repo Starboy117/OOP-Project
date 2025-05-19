@@ -50,7 +50,7 @@ if(userId == null){
               <a class="nav-link custom" href="#">Contact Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link custom" href="#">FAQs</a>
+              <a class="nav-link custom" href="faqs.jsp">FAQs</a>
             </li>
           </ul>
         </div>
@@ -164,7 +164,7 @@ if(userId == null){
 						    	
 						    	<div class="no-rooms-available d-flex flex-column justify-content-center align-items-center" style="width:600px;display:block;">
 								  
-								  <span><i class="bi bi-exclamation-circle-fill mb-3" style="font-size: 3rem; color: #422100;"></i> No Rooms available</span>
+								 
 								</div>
 
 						  

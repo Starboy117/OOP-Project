@@ -95,7 +95,8 @@ public class editUserServlet extends HttpServlet {
 			
 			if(check == true) {
 			
-				isTrue=staffDBUtill.updateUserDetails(user_id, name, username, email, password);
+				iStaffUtil istaffDButil = new staffDBUtill();
+				isTrue=istaffDButil.updateUserDetails(user_id, name, username, email, password);
 			
 				if(isTrue == true) {
 					

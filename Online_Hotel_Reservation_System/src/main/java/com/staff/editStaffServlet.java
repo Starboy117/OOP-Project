@@ -91,7 +91,8 @@ public class editStaffServlet extends HttpServlet {
 		
 		
 		boolean isTrue;
-		boolean check = staffDBUtill.checkUsername(username);
+		iStaffUtil istaffDButil = new staffDBUtill();
+		boolean check = istaffDButil.checkUsername(username);
 		
 		if(sUserName.equals(username)) {
 			
@@ -102,7 +103,7 @@ public class editStaffServlet extends HttpServlet {
 			
 			if(check == true) {
 			
-				isTrue=staffDBUtill.updateStaffDetails(user_id, name, username, email, password,role);
+				isTrue=istaffDButil.updateStaffDetails(user_id, name, username, email, password,role);
 			
 				if(isTrue == true) {
 					
@@ -115,6 +116,7 @@ public class editStaffServlet extends HttpServlet {
 					
 					RequestDispatcher dis = request.getRequestDispatcher("editStaff.jsp");
 	            	dis.forward(request, response);
+	   
 				
 					
 				}

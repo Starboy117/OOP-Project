@@ -1,6 +1,7 @@
 package com.user;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -10,6 +11,7 @@ import javax.servlet.http.*;
 
 import com.staff.Staff;
 import com.staff.staffDBUtill;
+import com.staff.iStaffUtil;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -33,8 +35,9 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
 
             if (userName.endsWith("@tendura_staff")) {
-                // Staff login
-                List<Staff> staffDetails = staffDBUtill.validateStaff(userName, password);
+                
+            	iStaffUtil istaffDButil = new staffDBUtill();
+                List<Staff> staffDetails = istaffDButil.validateStaff(userName, password);
 
                 if (staffDetails != null && !staffDetails.isEmpty()) {
                     Staff staff = staffDetails.get(0);
@@ -48,7 +51,20 @@ public class LoginServlet extends HttpServlet {
                         session.setAttribute("role", staff.getRole());
 
                         response.sendRedirect("adminDashboardServlet");
-                    } else {
+                    } 
+                    else if("Receptionist".equalsIgnoreCase(staff.getRole())) {
+                    	
+                    	 session.setAttribute("staffId", staff.getId());
+                         session.setAttribute("name", staff.getName());
+                         session.setAttribute("username", staff.getUsername());
+                         session.setAttribute("email", staff.getEmail());
+                         session.setAttribute("pass", staff.getPassword());
+                         session.setAttribute("role", staff.getRole());
+
+                         response.sendRedirect("ReceptionistDashboardServlet");
+                    	
+                    }
+                    else {
                         request.setAttribute("error", "Unauthorized staff role.");
                         request.getRequestDispatcher("Login.jsp").forward(request, response);
                     }

@@ -62,7 +62,7 @@ double total = Double.parseDouble(amount)*Integer.parseInt(nights);
               <a class="nav-link custom" href="#">Contact Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link custom" href="#">FAQs</a>
+              <a class="nav-link custom" href="faqs.jsp">FAQs</a>
             </li>
           </ul>
         </div>

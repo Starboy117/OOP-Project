@@ -75,7 +75,7 @@
                 <li class="active"><a href="getUsers"><i class="fas fa-user-alt"></i> Users</a></li>
                 <li><a href="getStaff"><i class="fas fa-user-tie"></i> Staff</a></li>
                 <li><a href="#"><i class="fas fa-house-user"></i> Rooms</a></li>
-                <li><a href="reports.html"><i class="fas fa-chart-bar"></i> Reports & Logs</a></li>
+                <li><a href="#"><i class="fas fa-chart-bar"></i> Reports & Logs</a></li>
                 
             </ul>
            
@@ -95,7 +95,7 @@
                     </div>
                     <div class="user-profile">
                     	<span class="user-name"><%=name %></span>
-                        <a href="userProfile.jsp"><i class="fas fa-user-circle"></i></a>
+                        <a href="#"><i class="fas fa-user-circle"></i></a>
                         <a href="logout" title="Logout" class="logout-icon">
         					<i class="fas fa-power-off"></i>
    						 </a>

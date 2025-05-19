@@ -233,6 +233,19 @@
 </servlet-mapping>
 
 
+
+<servlet>
+	<servlet-name>repDashboard</servlet-name>
+	<servlet-class>com.reservation.ReceptionistDashboardServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>repDashboard</servlet-name>
+	<url-pattern>/repDash</url-pattern>
+</servlet-mapping>
+
+
+
   
   
   

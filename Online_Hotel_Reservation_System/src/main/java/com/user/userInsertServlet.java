@@ -17,12 +17,16 @@ public class userInsertServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		//capturing all form inputs
 		String name =request.getParameter("name");
 		String userName = request.getParameter("uname");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String cPassword = request.getParameter("cPassword");
 		
+		
+		//checking for null values to send error message
 		if (name == null || name.isEmpty() ||
 			    userName == null || userName.isEmpty() ||
 			    email == null || email.isEmpty() ||
@@ -35,6 +39,7 @@ public class userInsertServlet extends HttpServlet {
 			}
 		
 		
+		//checking for matching password and confirm password
 		if(!password.equals(cPassword)) {
 			
 			request.setAttribute("error", "Passwords don't match.");
@@ -43,6 +48,7 @@ public class userInsertServlet extends HttpServlet {
             return;
 		}
 		
+		//checking whether user tries to use staff credential username
 		if(userName.endsWith("@tendura_staff")) {
 			
 			request.setAttribute("error", "Username cannot end with '@tendura_staff'.");
@@ -51,24 +57,27 @@ public class userInsertServlet extends HttpServlet {
             return;
 		}
 		
-		
+		//implementing try-catch box to capture exceptions
 		try {
 			
+			//creating control object to access control class
 			IUserDBUtil iuserDBUtill = new UserDBUtil();
+			
+			//checking for duplicate usernames
 			boolean check = iuserDBUtill.checkUsername(userName);
 		
 			
 		if(check==true) {
-			
+			//inserting user details to database
 			boolean msg = iuserDBUtill.insertUserDetails(name, userName, email, password);
 			
 			if(msg==true) {
-				
+				//redirecting to home page
 				response.sendRedirect("Login.jsp");
 				
 			}
 			else {
-
+				//redirecting to register page if error
 				request.setAttribute("error", "Registration failed.");
 	            RequestDispatcher dis = request.getRequestDispatcher("Register.jsp");
 	            dis.forward(request, response);

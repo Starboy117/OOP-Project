@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 
-<%@ page import="com.user.User" %>
+
+<%@ page import="com.reservation.Reservations" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.staff.Staff" %>
+<%@ page import="com.reservation.Guest" %>
 <%@ page import="com.Room.Room" %>
 
 
@@ -22,11 +23,11 @@
 	}
 
 	
-    Integer totalUsers = (Integer) request.getAttribute("totalUsers");
-    if (totalUsers == null) totalUsers = 0;
+    Integer totalReserve = (Integer) request.getAttribute("totalReserve");
+    if (totalReserve == null) totalReserve = 0;
 
-    Integer totalStaff = (Integer) request.getAttribute("totalStaff");
-    if (totalStaff == null) totalStaff = 0;
+    Integer totalGuests = (Integer) request.getAttribute("totalGuests");
+    if (totalGuests == null) totalGuests = 0;
 
     Integer totalRooms = (Integer) request.getAttribute("totalRooms");
     if (totalRooms == null) totalRooms = 0;
@@ -35,11 +36,6 @@
     String name = (String) session.getAttribute("name");
     
 %>
-
-
-
-
-
 
 <html lang="en">
 <head>
@@ -52,24 +48,22 @@
     
 </head>
 <body>
-    <div class="container1">
+    <div class="container">
         <nav class="sidebar">
             <div class="logo">
                 <h1>Tendura</h1>
                 <p><%=role %></p>
             </div>
             <ul>
-                <li class="active"><a href="adminDashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li><a href="getUsers"><i class="fas fa-user-alt"></i> Users</a></li>
-                <li><a href="getStaff"><i class="fas fa-user-tie"></i> Staff</a></li>
-                <li><a href="getAllRooms"><i class="fas fa-house-user"></i> Rooms</a></li>
+                <li class="active"><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="check-inout.jsp"><i class="fas fa-key"></i> Check In/Out</a></li>
+                <li><a href="guestView"><i class="fas fa-users"></i> Guests</a></li>
                 <li><a href="#"><i class="fas fa-chart-bar"></i> Reports & Logs</a></li>
-                
             </ul>
-           
+            
         </nav>
 
-        <main>
+             <main>
             <header>
                 <div class="header-content">
                     <h2><i class="fas fa-tachometer-alt"></i> Dashboard</h2>
@@ -95,26 +89,26 @@
                 <div class="stats-container">
                     <div class="stat-card">
                         <div class="stat-info">
-                            <h3>Total Users</h3>
-                            <p class="stat-number"><%=totalUsers %></p>
+                            <h3>Total Reservations</h3>
+                            <p class="stat-number"><%=totalReserve %></p>
                         </div>
                         <div class="stat-icon">
-                            <i class="fas fa-user-alt"></i></i>
+                            <i class="fas fa-calendar-check"></i>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-info">
-                            <h3>Total Staff</h3>
-                            <p class="stat-number"><%=totalStaff %></p>
+                            <h3>Total Guests</h3>
+                            <p class="stat-number"><%=totalGuests %></p>
                         </div>
                         <div class="stat-icon available">
-                            <i class="fas fa-user-tie"></i></i>
+                            <i class="fas fa-users"></i>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-info">
                             <h3>Total Rooms</h3>
-                            <p class="stat-number"><%= totalRooms %></p>
+                            <p class="stat-number"><%=totalRooms %></p>
                         </div>
                         <div class="stat-icon occupied">
                             <i class="fas fa-house-user"></i></i>
@@ -134,31 +128,31 @@
                 <div class="row">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Latest Users</h3>
+                            <h3>Latest Reservations</h3>
                             <a href="getUsers" class="btn-link">View All</a>
                         </div>
                         <div class="card-body">
                             <table>
                                 <thead>
                                     <tr>
+                                        <th>Reservation Id</th>
                                         <th>User Id</th>
-                                        <th>Name</th>
-                                        <th>Username</th>
-                                        <th>Email</th>
+                                        <th>Room Id</th>
+                                        <th>Check-In Date</th>
                                     </tr>
                                 </thead>
                                 <tbody id="checkout-list">
                           		 <%
 								    // Retrieve the user list from the session attribute
-								    List<User> userList = (List<User>) request.getAttribute("usersOverview");
-								    if (userList != null && !userList.isEmpty()) {
-								        for (User user : userList) {
+								    List<Reservations> rList = (List<Reservations>) request.getAttribute("reserveOverview");
+								    if (rList != null && !rList.isEmpty()) {
+								        for (Reservations reserve : rList) {
 								%>
 								            <tr>
-								                <td><%= user.getId() %></td>
-								                <td><%= user.getName() %></td>
-								                <td><%= user.getUsername() %></td>
-								                <td><%= user.getEmail() %></td>
+								                <td><%= reserve.getId() %></td>
+								                <td><%= reserve.getUserId() %></td>
+								                <td><%= reserve.getRoomId() %></td>
+								                <td><%= reserve.getCheckInDate() %></td>
 								            </tr>
 								<%
 								        }
@@ -177,33 +171,33 @@
 
                     <div class="card upcoming-checkins">
                         <div class="card-header">
-                            <h3>Latest Staff</h3>
+                            <h3>Latest Guests</h3>
                             <a href="getStaff" class="btn-link">View All</a>
                         </div>
                         <div class="card-body">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Staff Id</th>
+                                        <th>Guest Id</th>
                                         <th>Name</th>
-                                        <th>Username</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
+                                        <th>Phone Number</th>
+                                        <th>No of guests</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody id="checkin-list">
                                      <%
 								    // Retrieve the user list from the session attribute
-								    List<Staff> staffList = (List<Staff>) request.getAttribute("staffOverview");
-								    if (staffList != null && !staffList.isEmpty()) {
-								        for (Staff staff : staffList) {
+								    List<Guest> guestList = (List<Guest>) request.getAttribute("guestOverview");
+								    if (guestList != null && !guestList.isEmpty()) {
+								        for (Guest guest : guestList) {
 									%>
 								            <tr>
-								                <td><%= staff.getId() %></td>
-								                <td><%= staff.getName() %></td>
-								                <td><%= staff.getUsername() %></td>
-								                <td><%= staff.getEmail() %></td>
-								                <td><%= staff.getRole() %></td>
+								                <td><%= guest.getcID() %></td>
+								                <td><%= guest.getgName()%></td>
+								                <td><%= guest.getgPhn() %></td>
+								                <td><%= guest.getGuestNo() %></td>
+							
 								            </tr>
 									<%
 									        }
@@ -270,13 +264,9 @@
 
                 
             
+        </main>
     </div>
     
-    
-
-    
-    
-    
- 
+   
 </body>
 </html>
