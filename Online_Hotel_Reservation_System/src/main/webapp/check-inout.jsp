@@ -18,7 +18,7 @@
                 <li><a href="index.jsp"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li class="active"><a href="check-inout.jsp"><i class="fas fa-key"></i> Check In/Out</a></li>
                 <li><a href="guestView"><i class="fas fa-users"></i> Guests</a></li>
-                <li><a href="reports.jsp"><i class="fas fa-chart-bar"></i> Edit Page</a></li>
+                <li><a href="editGuest.jsp"><i class="fas fa-chart-bar"></i> Edit Page</a></li>
                 <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
             <div class="user-info">
@@ -444,7 +444,6 @@
         </div>
     </div>
     
-   <!--  <script src="js/script.js"></script>
-    <script src="js/checkinout.js"></script>--> 
+ 
 </body>
 </html>
