@@ -235,6 +235,16 @@
         <url-pattern>/guestDetails</url-pattern>
     </servlet-mapping>
     
+     <servlet>
+        <servlet-name>ViewtGuest</servlet-name>
+        <servlet-class>com.reservation.viewcheckInServlet</servlet-class>
+     </servlet>
+      <servlet-mapping>
+        <servlet-name>ViewtGuest</servlet-name>
+        <url-pattern>/guestView</url-pattern>
+    </servlet-mapping>
+  
+    
     <servlet>
     <servlet-name>UpdateGuest</servlet-name>
     <servlet-class>com.reservation.UpdateGuestServlet</servlet-class>
@@ -247,12 +257,12 @@
     
     
     <servlet>
-    <servlet-name>DeleteGuest</servlet-name>
+    <servlet-name>GuestDelete</servlet-name>
     <servlet-class>com.reservation.DeleteGuestServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
-    <servlet-name>DeleteGuest</servlet-name>
-    <url-pattern>/Delete</url-pattern>
+    <servlet-name>GuestDelete</servlet-name>
+    <url-pattern>/deleteGuest</url-pattern>
     </servlet-mapping>
 </web-app>

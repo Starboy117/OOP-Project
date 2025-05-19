@@ -1,14 +1,45 @@
 <!DOCTYPE html>
+ <%@ page import = "com.reservation.Guest" %>
+ <%@ page import = "java.util.List" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tendura Hotel - Guest Management</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Bootstrap 5 CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
 </head>
 <body>
-    <div class="container">
+
+<%
+    String msg = (String) session.getAttribute("successMessage");
+ 
+
+    if ("success".equals(msg)) {
+	%>
+	    <div class="alert alert-success alert-dismissible fade show" role="alert">
+	        Guest Deletion successful!
+	        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	    </div>
+	<%
+	    } else if ("error".equals(msg)) {
+	%>
+	    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+	        Something went wrong!
+	        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	    </div>
+	<%
+			
+	    }
+    
+    session.removeAttribute("successMessage");
+	%>
+	
+	
+    <div class="container1">
         <nav class="sidebar">
             <div class="logo">
                 <h1>Tendura</h1>
@@ -21,13 +52,7 @@
                 <li><a href="reports.jsp"><i class="fas fa-chart-bar"></i> Reports & Logs</a></li>
                 <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
-            <div class="user-info">
-                <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg" alt="Receptionist">
-                <div>
-                    <p class="name">Jane Doe</p>
-                    <p class="role">Receptionist</p>
-                </div>
-            </div>
+            
         </nav>
 
         <main>
@@ -54,205 +79,94 @@
                 <div class="card">
                     <div class="card-header">
                         <h3>Guest Directory</h3>
-                        <div class="header-actions">
-                            <div class="search-box">
-                                <input type="text" id="guest-search" placeholder="Search guests...">
-                                <button class="search-btn"><i class="fas fa-search"></i></button>
-                            </div>
-                            <button class="btn" id="add-guest-btn"><i class="fas fa-plus"></i> Add New Guest</button>
-                        </div>
+                       
                     </div>
-                    <div class="card-body">
-                        <div id="guest-form" class="form-container hidden">
-                            <h3 id="form-title">Add New Guest</h3>
-                            <form id="guest-data-form">
-                                <input type="hidden" id="guest-id">
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="first-name">First Name*</label>
-                                        <input type="text" id="first-name" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="last-name">Last Name*</label>
-                                        <input type="text" id="last-name" required>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" id="email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="phone">Phone*</label>
-                                        <input type="tel" id="phone" required>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="id-type">ID Type</label>
-                                        <select id="id-type">
-                                            <option value="passport">Passport</option>
-                                            <option value="drivers-license">Driver's License</option>
-                                            <option value="national-id">National ID</option>
-                                            <option value="other">Other</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="id-number">ID Number*</label>
-                                        <input type="text" id="id-number" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="address">Address</label>
-                                    <textarea id="address"></textarea>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="vip-status">VIP Status</label>
-                                        <select id="vip-status">
-                                            <option value="regular">Regular</option>
-                                            <option value="frequent">Frequent Guest</option>
-                                            <option value="vip">VIP</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="notes">Special Notes</label>
-                                        <textarea id="notes"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-actions">
-                                    <button type="button" class="btn btn-secondary" id="cancel-guest-form">Cancel</button>
-                                    <button type="submit" class="btn" id="save-guest-btn">Save Guest</button>
-                                </div>
-                            </form>
-                        </div>
+
 
                         <table id="guests-table">
                             <thead>
                                 <tr>
+                                    <th>Id</th>
                                     <th>Name</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>ID Number</th>
-                                    <th>Status</th>
-                                    <th>Last Stay</th>
+                                    <th>Phone No</th>
+                                    <th>Room No</th>
+                                    <th>Check-In Date</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Guest records will be loaded here via JavaScript -->
+                                <%
+                                List<Guest> guests = (List<Guest>) request.getAttribute("guests");
+                                if (guests != null && !guests.isEmpty()){
+                                
+                                	for(Guest g1: guests){
+                                		
+                          
+                                
+                                %>
+                                
+                           <tr>
+							    <td><%= g1.getcID() %></td>
+							    <td><%= g1.getgName() %></td>
+							    <td><%= g1.getgPhn() %></td>
+							    <td><%= g1.getRoomNo() %></td>
+							    <td><%= g1.getcInDate() %></td>
+							    <td>
+							        <a href="#"><button class="btn btn-success me-3"><i class="fas fa-edit"></i> Edit</button></a>
+							
+							        <!-- Delete Button with unique modal trigger -->
+							        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal<%= g1.getcID() %>">
+							            <i class="fas fa-trash-alt"></i> Delete Guest
+							        </button>
+							
+							        <!-- Unique Modal -->
+							        <div class="modal fade" id="confirmDeleteModal<%= g1.getcID() %>" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+							            <div class="modal-dialog">
+							                <div class="modal-content">
+							                    <div class="modal-header bg-danger text-white">
+							                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+							                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+							                    </div>
+							                    <div class="modal-body">
+							                        Are you sure you want to delete this user? This action cannot be undone.
+							                    </div>
+							                    <div class="modal-footer">
+							                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+							                        <form action="deleteGuest" method="post">
+
+							                            <input type="hidden" name="id" value="<%= g1.getcID() %>">
+							                            <button type="submit" class="btn btn-danger">Delete</button>
+							                        </form>
+							                    </div>
+							                </div>
+							            </div>
+							        </div>
+							    </td>
+							</tr>
+							
+							                                
+                               <%
+								        }
+								    } else {
+								%>
+								        <tr><td colspan="6">No users found.</td></tr>
+								<%
+								    }
+								%>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <div class="row" id="guest-detail-section" style="display: none;">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3>Guest Details: <span id="detail-guest-name"></span></h3>
-                            <button class="btn-link" id="close-details"><i class="fas fa-times"></i> Close</button>
-                        </div>
-                        <div class="card-body">
-                            <div class="guest-details">
-                                <div class="guest-profile">
-                                    <div class="profile-image">
-                                        <i class="fas fa-user-circle"></i>
-                                    </div>
-                                    <div class="profile-info">
-                                        <h4 id="profile-guest-name">John Smith</h4>
-                                        <p id="profile-guest-id">ID: PASSPORT-AB123456</p>
-                                        <p id="profile-guest-status" class="guest-status vip">VIP Guest</p>
-                                    </div>
-                                </div>
+                    
 
-                                <div class="detail-section">
-                                    <h4>Contact Information</h4>
-                                    <div class="detail-grid">
-                                        <div class="detail-item">
-                                            <span class="detail-label">Phone:</span>
-                                            <span class="detail-value" id="detail-phone">+1 (555) 123-4567</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <span class="detail-label">Email:</span>
-                                            <span class="detail-value" id="detail-email">john.smith@example.com</span>
-                                        </div>
-                                        <div class="detail-item">
-                                            <span class="detail-label">Address:</span>
-                                            <span class="detail-value" id="detail-address">123 Main St, Anytown, USA</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="detail-section">
-                                    <h4>Stay History</h4>
-                                    <table class="detail-table" id="stay-history-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Room</th>
-                                                <th>Check-In</th>
-                                                <th>Check-Out</th>
-                                                <th>Nights</th>
-                                                <th>Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>101</td>
-                                                <td>2025-03-15</td>
-                                                <td>2025-03-20</td>
-                                                <td>5</td>
-                                                <td>$850.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>205</td>
-                                                <td>2024-12-24</td>
-                                                <td>2024-12-26</td>
-                                                <td>2</td>
-                                                <td>$480.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>302</td>
-                                                <td>2024-08-10</td>
-                                                <td>2024-08-15</td>
-                                                <td>5</td>
-                                                <td>$1,250.00</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="detail-section">
-                                    <h4>Notes & Preferences</h4>
-                                    <div class="notes-section" id="guest-notes">
-                                        <p>Prefers rooms on higher floors with city view. Allergic to feather pillows. Usually orders room service for breakfast.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </main>
     </div>
     
-    <!-- Confirmation Modal -->
-    <div class="modal" id="confirm-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Confirm Deletion</h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to delete this guest record? This action cannot be undone.</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" id="cancel-delete">Cancel</button>
-                <button class="btn btn-danger" id="confirm-delete">Delete</button>
-            </div>
-        </div>
-    </div>
+    
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 
-    <script src="js/script.js"></script>
-    <script src="js/guests.js"></script>
+    
 </body>
 </html>

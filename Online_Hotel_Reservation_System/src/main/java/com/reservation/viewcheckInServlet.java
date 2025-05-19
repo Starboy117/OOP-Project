@@ -22,7 +22,7 @@ public class viewcheckInServlet extends HttpServlet {
 		
 		if(guestList != null || !guestList.isEmpty()) {
 			request.setAttribute("guests",guestList);
-			RequestDispatcher dis = request.getRequestDispatcher("guest.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("guests.jsp");
 			dis.forward(request, response);
 			
 		}

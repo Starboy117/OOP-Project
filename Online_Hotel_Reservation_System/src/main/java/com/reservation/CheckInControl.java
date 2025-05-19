@@ -73,40 +73,41 @@ public class CheckInControl {
 		
 	}
 	
-	public static boolean updateGuest(String name,String phnNo, String Email,String idNo,String checkOutdate) {
-		
-		boolean successMessage;
-		try {
-			
-			con = DatabaseCon.getConnection();
-	        stmt = con.createStatement();
-	        String sql = "update guest_checkins set name = '"+guest_name+"',phnNO='"+guest_phone+"',Email='"+guest_email+"',idNo='"+id_number+"',checkOutdate='"+checkOut_date+"'" +"where id='"+checkin_id+"'";
-	        
-	        int rs =stmt.executeUpdate(sql);
-	        
-	        if(rs>0) {
-	        	successMessage = true;
-	        	
-	        }
-		}
-		
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-		return successMessage;
-		
-	}
+//	public static boolean updateGuest(String name,String phnNo, String Email,String idNo,String checkOutdate) {
+//
+//		
+//		boolean successMessage;
+//		try {
+//			
+//			con = DatabaseCon.getConnection();
+//	        stmt = con.createStatement();
+//	        String sql = "update guest_checkins set name = '"+guest_name+"',phnNO='"+guest_phone+"',Email='"+guest_email+"',idNo='"+id_number+"',checkOutdate='"+checkOut_date+"'" +"where id='"+checkin_id+"'";
+//	        
+//	        int rs =stmt.executeUpdate(sql);
+//	        
+//	        if(rs>0) {
+//	        	successMessage = true;
+//	        	
+//	        }
+//		}
+//		
+//		catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//		return successMessage;
+//		
+//	}
 	
 	public static boolean deleteGuest(String id) {
 		
 		int convId=Integer.parseInt(id);
 		
-		boolean successMessage;
+		boolean successMessage=false;
 		try {
 			con = DatabaseCon.getConnection();
 	        stmt = con.createStatement();
 	        
-	        String sql = "delete from guest_checkins where id = '"+convId+"'";
+	        String sql = "delete from guest_checkins where checkin_id="+convId+"";
 	        int r = stmt.executeUpdate(sql);
 	        
 	        if(r>0) {
