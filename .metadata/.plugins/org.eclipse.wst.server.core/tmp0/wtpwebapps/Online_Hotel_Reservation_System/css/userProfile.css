@@ -100,3 +100,16 @@
 .btn.custom {
   margin-bottom: 50px;
 }
+
+.input1 {
+    padding-right: 35px; /* Make space for the eye icon */
+}
+
+.bi-eye-slash, .bi-eye {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c6c6c;
+}

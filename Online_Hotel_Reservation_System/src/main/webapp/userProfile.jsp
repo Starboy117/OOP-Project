@@ -134,10 +134,16 @@
                   
                   
                   <label class="fs-3">Password</label><br>
-                  <input class="input1" type="password" value="<%=pass %>" name="password"><br><br>
-
-                  <label class="fs-3">Confirm Password</label><br>
-                  <input class="input1" type="password" value="<%=pass %>" name="cPassword"><br><br>
+					<div style="position: relative;">
+					  <input class="input1" type="password" value="<%=pass %>" name="password" id="password"><br><br>
+					  <i class="bi bi-eye-slash" id="togglePassword" style="position: absolute; right: 10px; top: 10px; cursor: pointer;"></i>
+					</div>
+					
+					<label class="fs-3">Confirm Password</label><br>
+					<div style="position: relative;">
+					  <input class="input1" type="password" value="<%=pass %>" name="cPassword" id="confirmPassword"><br><br>
+					  <i class="bi bi-eye-slash" id="toggleConfirmPassword" style="position: absolute; right: 10px; top: 10px; cursor: pointer;"></i>
+					</div>
                 </fieldset>
                 
                 <button type="button" class="btn custom bg-brown btn-lg border-0" id="cp-btn" onclick="changePass();">Change Password</button>
