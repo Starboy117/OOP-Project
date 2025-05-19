@@ -52,7 +52,7 @@ public class CheckInControl {
 			 con = DatabaseCon.getConnection();
 		        stmt = con.createStatement();
 		        
-		        String sql = "SELECT checkin_id, guest_name, guest_phone, room_number, checkin_date FROM guest_checkins";
+		        String sql = "SELECT checkin_id, guest_name, guest_phone, room_number, checkout_date FROM guest_checkins";
 		        rs = stmt.executeQuery(sql);
 		        
 		        while(rs.next()) {
@@ -60,9 +60,9 @@ public class CheckInControl {
 		        	String name=rs.getString(2);
 		        	String phnNo=rs.getString(3);
 		        	String roomNo=rs.getString(4);
-		        	String checkInDate=rs.getString(5);
+		        	String checkOutDate=rs.getString(5);
 		        	
-		        	Guest guest = new Guest(id,name,phnNo,roomNo,checkInDate);
+		        	Guest guest = new Guest(id,name,phnNo,roomNo,checkOutDate);
 		        	guestList.add(guest);
 		        }
 		}
@@ -73,30 +73,31 @@ public class CheckInControl {
 		
 	}
 	
-//	public static boolean updateGuest(String name,String phnNo, String Email,String idNo,String checkOutdate) {
-//
-//		
-//		boolean successMessage;
-//		try {
-//			
-//			con = DatabaseCon.getConnection();
-//	        stmt = con.createStatement();
-//	        String sql = "update guest_checkins set name = '"+guest_name+"',phnNO='"+guest_phone+"',Email='"+guest_email+"',idNo='"+id_number+"',checkOutdate='"+checkOut_date+"'" +"where id='"+checkin_id+"'";
-//	        
-//	        int rs =stmt.executeUpdate(sql);
-//	        
-//	        if(rs>0) {
-//	        	successMessage = true;
-//	        	
-//	        }
-//		}
-//		
-//		catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		return successMessage;
-//		
-//	}
+	public static boolean updateGuest(String id,String name,String nic, String phnNo,String roomNo,String checkOutdate) {
+		
+		int checkId = Integer.parseInt(id);
+		
+		boolean successMessage=false;
+		try {
+			
+			con = DatabaseCon.getConnection();
+	        stmt = con.createStatement();
+	        String sql = "update guest_checkins set guest_name = '"+name+"',id_number='"+nic+"',guest_phone='"+phnNo+"',room_number='"+roomNo+"',checkout_date='"+checkOutdate+"'" +"where checkin_id="+checkId+"";
+	        
+	        int rs =stmt.executeUpdate(sql);
+	        
+	        if(rs>0) {
+	        	successMessage = true;
+	        	
+	        }
+		}
+		
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return successMessage;
+		
+	}
 	
 	public static boolean deleteGuest(String id) {
 		
@@ -120,6 +121,47 @@ public class CheckInControl {
 		return successMessage;	
 	}
 
+
+
+public static List<Guest> singleGuest(String id) {
+	
+	int convId=Integer.parseInt(id);
+	
+	ArrayList<Guest> guest = new ArrayList<>();
+	
+	try {
+		con = DatabaseCon.getConnection();
+        stmt = con.createStatement();
+        
+        String sql = "select * from guest_checkins where checkin_id = "+convId+"";
+        
+        rs=stmt.executeQuery(sql);
+        
+        if(rs.next()) {
+        	
+        	int cid =rs.getInt(1);
+        	String name = rs.getString(2);
+        	String phn = rs.getString(3);
+        	String roomNo = rs.getString(7);
+        	String checkout = rs.getString(10);
+        	
+        	Guest g1 = new Guest(cid,name,phn,roomNo,checkout);
+        	
+        	guest.add(g1);
+        	
+        	
+        }
+        		
+        		
+	}
+	catch(Exception e) {
+		e.printStackTrace();
+	}
+	
+	return guest;
+	
+}
+	
 }
 
 

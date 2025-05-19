@@ -32,7 +32,6 @@ public class DeleteGuestServlet extends HttpServlet {
 		else {
 			session.setAttribute("successMessage", "error");
 			response.sendRedirect("guestView");
-			
 		}
 	}
 

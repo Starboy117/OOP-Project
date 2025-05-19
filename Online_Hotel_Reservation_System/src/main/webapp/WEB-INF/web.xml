@@ -252,7 +252,7 @@
     
     <servlet-mapping>
     <servlet-name>UpdateGuest</servlet-name>
-    <url-pattern>/Update</url-pattern>
+    <url-pattern>/updateGuest</url-pattern>
     </servlet-mapping>
     
     
@@ -265,4 +265,15 @@
     <servlet-name>GuestDelete</servlet-name>
     <url-pattern>/deleteGuest</url-pattern>
     </servlet-mapping>
+    
+     <servlet>
+    <servlet-name>SingleGuest</servlet-name>
+    <servlet-class>com.reservation.viewSingleGuestServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+    <servlet-name>SingleGuest</servlet-name>
+    <url-pattern>/singleGuest</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

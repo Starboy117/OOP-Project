@@ -17,24 +17,24 @@ public class UpdateGuestServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		String cid = request.getParameter("id");
 		String name = request.getParameter("name");
-		String phone = request.getParameter("phnNo");
-		String Email = request.getParameter("Email");
-		String idNo = request.getParameter("idNo");
+		String nic = request.getParameter("nic");
+		String phnNo = request.getParameter("phnNo");
+		String roomNo = request.getParameter("roomNo");
 		String checkOutdate = request.getParameter("checkOutdate");
 		
-		boolean isSuccess =CheckInControl.updateGuest(name, phone, Email, idNo, checkOutdate);
+		boolean isSuccess =CheckInControl.updateGuest(cid,name, nic, phnNo, roomNo, checkOutdate);
 		
 		if(isSuccess == true){
-			request.setAttribute("Message","Successfully Updated");
-			RequestDispatcher dis = request.getRequestDispatcher("guests.jsp");
-			dis.forward(request, response);
+			
+			response.sendRedirect("guestView");
+		
 		}
 		
 		else {
-			request.setAttribute("Message","Update Failed");
-			RequestDispatcher dis = request.getRequestDispatcher("guest.jsp");
+			request.setAttribute("error","Update Failed");
+			RequestDispatcher dis = request.getRequestDispatcher("editGuest.jsp");
 			dis.forward(request, response);
 		}
 		

@@ -90,7 +90,7 @@
                                     <th>Name</th>
                                     <th>Phone No</th>
                                     <th>Room No</th>
-                                    <th>Check-In Date</th>
+                                    <th>Check-Out Date</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -110,9 +110,9 @@
 							    <td><%= g1.getgName() %></td>
 							    <td><%= g1.getgPhn() %></td>
 							    <td><%= g1.getRoomNo() %></td>
-							    <td><%= g1.getcInDate() %></td>
+							    <td><%= g1.getcOutDate() %></td>
 							    <td>
-							        <a href="#"><button class="btn btn-success me-3"><i class="fas fa-edit"></i> Edit</button></a>
+							        <a href="singleGuest?id=<%=g1.getcID()%>"><button class="btn btn-success me-3"><i class="fas fa-edit"></i> Edit</button></a>
 							
 							        <!-- Delete Button with unique modal trigger -->
 							        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal<%= g1.getcID() %>">

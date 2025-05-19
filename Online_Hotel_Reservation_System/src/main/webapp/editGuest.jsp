@@ -13,6 +13,8 @@
     
     session.removeAttribute("successMessage");
     session.removeAttribute("errorMessage");
+    
+    String checkId = request.getParameter("id");
 %>
 <html lang="en">
 <head>
@@ -35,7 +37,7 @@
                  <li><a href="index.jsp"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="check-inout.jsp"><i class="fas fa-key"></i> Check In/Out</a></li>
                 <li class="active"><a href="guests.jsp"><i class="fas fa-users"></i> Guests</a></li>
-                <li><a href="reports.jsp"><i class="fas fa-chart-bar"></i> Reports & Logs</a></li>
+                <li><a href="reports.jsp"><i class="fas fa-chart-bar"></i> Edit page</a></li>
                 <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
         </nav>
@@ -64,61 +66,59 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h3>Edit Guest Member</h3>
-                            <a href="getStaff" class="btn btn-secondary">
+                            <a href="guestView" class="btn btn-secondary">
                                 <i class="fas fa-arrow-left"></i> Back to Guest List
                             </a>
                         </div>
                     </div>
                     <div class="card-body">
-                    <% String error = (String) request.getAttribute("userEditError"); %>
+                    <% String error = (String) request.getAttribute("error"); %>
 						<% if (error != null) { %>
 			 			 <p style="color:red;"><%= error %></p>
 					<% } %>
-                        <form action="#" method="post" class="needs-validation" novalidate>
-                            <input type="hidden" name="id" value="${user_id}">
-                            <input type="hidden" name="initial_username" value="${user_username}">
+                        <form action="updateGuest" method="post" class="needs-validation" novalidate>
+                            <input type="hidden" name="id" value="<%=checkId%>">
+                           
                             
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="name" class="form-label">Guest Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" value="" required>
+                                    <input type="text" class="form-control" id="name" name="name" value="${name}" required>
                                     <div class="invalid-feedback">
                                         Please enter the staff member's full name.
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="username" class="form-label">NIC Number</label>
-                                    <input type="text" class="form-control" id="username" name="username" value="${user_username}" required>
-                                    <div class="invalid-feedback">
-                                        Please enter a username.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="email" class="form-label">Phone Number</label>
-                                    <input type="email" class="form-control" id="email" name="email" value="${user_email}" required>
-                                    <div class="invalid-feedback">
-                                        Please enter a valid email address.
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
                                     <label for="password" class="form-label">Room Number</label>
                                     <div class="input-group">
-                                        <input type="password" class="form-control" id="password" name="password" value="${user_password}" required>
+                                        <input type="text" class="form-control" name="roomNo" value="${roomNo}" required>
                                        
                                     </div>
                                     <div class="invalid-feedback">
                                         Please enter a password.
                                     </div>
                                 </div>
+                                
+                               
+                            
                             </div>
 
+                            
+                                
+                          
+
                             <div class="row mb-3">
+                             
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Phone Number</label>
+                                    <input type="email" class="form-control" id="email" name="phnNo" value="${phone}" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <label for="role" class="form-label">Check-Out Date</label>
-                                    <input type="password" class="form-control" id="password" name="password" value="${user_password}" required>
+                                    <input type="text" class="form-control"  name="checkOutdate" value="${date}" required>
                                    
 
                                     <div class="invalid-feedback">
@@ -131,7 +131,7 @@
                                 <button type="submit" class="btn btn-success">
                                     <i class="fas fa-save"></i> Update Guest Member
                                 </button>
-                                <a href="getStaff" class="btn btn-danger">
+                                <a href="guestView" class="btn btn-danger">
                                     <i class="fas fa-times"></i> Cancel
                                 </a>
                             </div>

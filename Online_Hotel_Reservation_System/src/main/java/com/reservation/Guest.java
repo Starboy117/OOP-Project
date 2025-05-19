@@ -30,13 +30,13 @@ public class Guest {
 	}
 	
 	
-	public Guest(int cID, String gName, String gPhn, String roomNo, String cInDate) {
+	public Guest(int cID, String gName, String gPhn, String roomNo, String cOutDate) {
 		
 		this.cID = cID;
 		this.gName = gName;
 		this.gPhn = gPhn;
 		this.roomNo = roomNo;
-		this.cInDate = cInDate;
+		this.cOutDate = cOutDate;
 	}
 	
 	
@@ -48,6 +48,18 @@ public class Guest {
 		this.gPhn = gPhn;
 		this.email = email;
 		this.idNo = idNo;
+		this.cOutDate = cOutDate;
+	}
+	
+	
+	
+
+
+	public Guest(String gName, String gPhn, String roomNo, String cOutDate) {
+
+		this.gName = gName;
+		this.gPhn = gPhn;
+		this.roomNo = roomNo;
 		this.cOutDate = cOutDate;
 	}
 
